@@ -441,7 +441,7 @@ section h2::after {
     margin: 10px 0;
 }
 
-/* ===== TESTIMONI ===== */
+/* ===== TESTIMONI YANG DIUBAH ===== */
 .testimoni {
     background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
                 url("https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80") center/cover fixed;
@@ -456,21 +456,133 @@ section h2::after {
     background: var(--accent);
 }
 
-.testimoni .card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-color: var(--accent);
-    color: white;
+.testimoni-slider {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 15px;
 }
 
-.testimoni .card h3 {
-    color: var(--accent);
+.testimoni-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.testimoni-card {
+    min-width: 100%;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 204, 0, 0.2);
+    position: relative;
+}
+
+.testimoni-card.active {
+    display: block;
+}
+
+.client-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+    margin: 0 auto 20px;
+    display: block;
 }
 
 .quote-icon {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: var(--accent);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.testimoni-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.client-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.client-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--accent);
+}
+
+.client-motor {
+    font-size: 0.9rem;
+    color: #ddd;
+    margin-bottom: 10px;
+}
+
+.client-rating {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.client-rating i {
+    margin: 0 2px;
+}
+
+.testimoni-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.testimoni-dots {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.dot.active {
+    background: var(--accent);
+    transform: scale(1.2);
+}
+
+.prev-btn, .next-btn {
+    background: rgba(255, 204, 0, 0.2);
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background: var(--accent);
+    color: #000;
 }
 
 /* ===== CONTACT ===== */
@@ -664,6 +776,10 @@ section.show {
     .portfolio-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
+    
+    .testimoni-card {
+        padding: 30px 20px;
+    }
 }
 
 /* Mobile */
@@ -798,6 +914,24 @@ section.show {
         height: 200px;
     }
     
+    /* Testimoni Mobile */
+    .testimoni-slider {
+        margin: 0 10px;
+    }
+    
+    .testimoni-card {
+        padding: 25px 15px;
+    }
+    
+    .client-photo {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .testimoni-text {
+        font-size: 1rem;
+    }
+    
     /* Team */
     .team-member img {
         width: 120px;
@@ -806,11 +940,6 @@ section.show {
     
     .team-member h3 {
         font-size: 1.2rem;
-    }
-    
-    /* Testimonials */
-    .testimoni .card {
-        padding: 20px;
     }
     
     /* Contact Form */
@@ -888,6 +1017,19 @@ section.show {
     
     .portfolio-item {
         height: 180px;
+    }
+    
+    .testimoni-card {
+        padding: 20px 12px;
+    }
+    
+    .client-photo {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .testimoni-text {
+        font-size: 0.95rem;
     }
     
     .team-member img {
@@ -1139,30 +1281,113 @@ section.show {
     </div>
 </section>
 
-<!-- ================= TESTIMONI ================= -->
+<!-- ================= TESTIMONI YANG DIUBAH ================= -->
 <section class="testimoni">
     <h2>Apa Kata Klien Kami</h2>
-    <div class="grid">
-        <div class="service-card">
-            <div class="quote-icon">
-                <i class="fas fa-quote-left"></i>
+    
+    <div class="testimoni-slider">
+        <div class="testimoni-container" id="testimoniContainer">
+            <!-- Testimonial 1 -->
+            <div class="testimoni-card">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Budi Santoso" class="client-photo">
+                <div class="quote-icon">
+                    <i class="fas fa-quote-right"></i>
+                </div>
+                <p class="testimoni-text">
+                    "Motor Yamaha R6 saya dimodifikasi dengan hasil yang luar biasa. Tim sangat profesional dan detail-oriented. Hasilnya melebihi ekspektasi saya. Recommended banget!"
+                </p>
+                <div class="client-info">
+                    <div class="client-name">Budi Santoso</div>
+                    <div class="client-motor">Yamaha R6 Custom</div>
+                    <div class="client-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
             </div>
-            <h3>Budi Santoso</h3>
-            <p>"Motor Yamaha R6 saya dimodifikasi dengan hasil yang luar biasa. Tim sangat profesional dan detail-oriented. Recommended!"</p>
+            
+            <!-- Testimonial 2 -->
+            <div class="testimoni-card">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ani Wijaya" class="client-photo">
+                <div class="quote-icon">
+                    <i class="fas fa-quote-right"></i>
+                </div>
+                <p class="testimoni-text">
+                    "Pelayanan terbaik! Sparepart original dengan harga kompetitif. Motor Ducati saya sekarang performanya seperti baru. Sangat puas dengan layanan purna jualnya."
+                </p>
+                <div class="client-info">
+                    <div class="client-name">Ani Wijaya</div>
+                    <div class="client-motor">Ducati Monster 821</div>
+                    <div class="client-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="testimoni-card">
+                <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Rudi Hartono" class="client-photo">
+                <div class="quote-icon">
+                    <i class="fas fa-quote-right"></i>
+                </div>
+                <p class="testimoni-text">
+                    "Custom paint yang mereka buat untuk Harley saya sangat memukau. Banyak yang bertanya di mana saya melakukannya. Detailnya sempurna dan tahan lama."
+                </p>
+                <div class="client-info">
+                    <div class="client-name">Rudi Hartono</div>
+                    <div class="client-motor">Harley Davidson Custom</div>
+                    <div class="client-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 4 -->
+            <div class="testimoni-card">
+                <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Agus Supriyadi" class="client-photo">
+                <div class="quote-icon">
+                    <i class="fas fa-quote-right"></i>
+                </div>
+                <p class="testimoni-text">
+                    "Perbaikan mesin Kawasaki ZX10R saya dikerjakan dengan cepat dan hasilnya maksimal. Tim mekaniknya benar-benar ahli dan menggunakan alat diagnostik modern."
+                </p>
+                <div class="client-info">
+                    <div class="client-name">Agus Supriyadi</div>
+                    <div class="client-motor">Kawasaki ZX10R</div>
+                    <div class="client-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="service-card">
-            <div class="quote-icon">
-                <i class="fas fa-quote-left"></i>
+        
+        <div class="testimoni-nav">
+            <button class="prev-btn" id="prevTestimoni">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="testimoni-dots" id="testimoniDots">
+                <!-- Dots akan dibuat dengan JavaScript -->
             </div>
-            <h3>Ani Wijaya</h3>
-            <p>"Pelayanan terbaik! Sparepart original dengan harga kompetitif. Motor Ducati saya sekarang performanya seperti baru."</p>
-        </div>
-        <div class="service-card">
-            <div class="quote-icon">
-                <i class="fas fa-quote-left"></i>
-            </div>
-            <h3>Rudi Hartono</h3>
-            <p>"Custom paint yang mereka buat untuk Harley saya sangat memukau. Banyak yang bertanya di mana saya melakukannya."</p>
+            
+            <button class="next-btn" id="nextTestimoni">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
     </div>
 </section>
@@ -1319,6 +1544,84 @@ function toggleService(card) {
     // Buka/tutup kartu yang diklik
     card.classList.toggle('active');
 }
+
+/* ===== TESTIMONIAL SLIDER ===== */
+document.addEventListener('DOMContentLoaded', function() {
+    const testimoniContainer = document.getElementById('testimoniContainer');
+    const testimoniCards = document.querySelectorAll('.testimoni-card');
+    const prevBtn = document.getElementById('prevTestimoni');
+    const nextBtn = document.getElementById('nextTestimoni');
+    const dotsContainer = document.getElementById('testimoniDots');
+    
+    let currentIndex = 0;
+    const totalTestimonials = testimoniCards.length;
+    
+    // Create dots
+    for (let i = 0; i < totalTestimonials; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToTestimonial(i));
+        dotsContainer.appendChild(dot);
+    }
+    
+    const dots = document.querySelectorAll('.dot');
+    
+    function updateTestimonial() {
+        testimoniContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update active dot
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    function goToTestimonial(index) {
+        currentIndex = index;
+        if (currentIndex < 0) currentIndex = totalTestimonials - 1;
+        if (currentIndex >= totalTestimonials) currentIndex = 0;
+        updateTestimonial();
+    }
+    
+    function nextTestimonial() {
+        currentIndex = (currentIndex + 1) % totalTestimonials;
+        updateTestimonial();
+    }
+    
+    function prevTestimonial() {
+        currentIndex = (currentIndex - 1 + totalTestimonials) % totalTestimonials;
+        updateTestimonial();
+    }
+    
+    // Event listeners
+    prevBtn.addEventListener('click', prevTestimonial);
+    nextBtn.addEventListener('click', nextTestimonial);
+    
+    // Auto slide setiap 5 detik
+    let slideInterval = setInterval(nextTestimonial, 5000);
+    
+    // Hentikan auto slide saat hover
+    testimoniContainer.addEventListener('mouseenter', () => {
+        clearInterval(slideInterval);
+    });
+    
+    // Lanjutkan auto slide saat mouse leave
+    testimoniContainer.addEventListener('mouseleave', () => {
+        slideInterval = setInterval(nextTestimonial, 5000);
+    });
+    
+    // Tambah click untuk testimonial cards
+    testimoniCards.forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', function() {
+            // Bisa ditambahkan aksi lain seperti modal popup
+            alert('Testimonial ' + (Array.from(testimoniCards).indexOf(this) + 1));
+        });
+    });
+    
+    // Initialize
+    updateTestimonial();
+});
 </script>
 
 </body>
