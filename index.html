@@ -213,7 +213,8 @@ section h2::after {
     gap: 25px;
 }
 
-.card {
+/* ===== SERVICES ===== */
+.service-card {
     background: white;
     padding: 25px;
     border-radius: 10px;
@@ -223,9 +224,10 @@ section h2::after {
     border-top: 4px solid var(--primary);
     overflow: hidden;
     position: relative;
+    cursor: pointer;
 }
 
-.card::before {
+.service-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -237,12 +239,12 @@ section h2::after {
     z-index: 0;
 }
 
-.card:hover::before {
+.service-card:hover::before {
     height: 100%;
     opacity: 0.1;
 }
 
-.card h3 {
+.service-card h3 {
     margin-bottom: 15px;
     color: var(--primary);
     font-size: 1.3rem;
@@ -251,11 +253,66 @@ section h2::after {
     line-height: 1.4;
 }
 
-.card p {
+.service-short-desc {
     position: relative;
     z-index: 1;
     font-size: 0.95rem;
     line-height: 1.6;
+    margin-bottom: 10px;
+    transition: var(--transition);
+}
+
+.service-full-desc {
+    position: relative;
+    z-index: 1;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-align: justify;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.service-card.active .service-full-desc {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #ddd;
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+    transition: var(--transition);
+}
+
+.service-card.active .service-icon {
+    transform: rotate(10deg);
+    color: var(--primary-dark);
+}
+
+.service-expand-icon {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    color: var(--primary);
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.service-card.active .service-expand-icon {
+    transform: rotate(180deg);
+    color: var(--primary-dark);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
 /* ===== ABOUT ===== */
@@ -304,13 +361,6 @@ section h2::after {
 
 .about-image:hover img {
     transform: scale(1.05);
-}
-
-/* ===== SERVICES ===== */
-.service-icon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    color: var(--primary);
 }
 
 /* ===== PORTFOLIO ===== */
@@ -595,16 +645,6 @@ section.show {
     transform: translateY(0);
 }
 
-/* Card hover animasi */
-.card {
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-}
-
 /* ================= RESPONSIVE BREAKPOINTS ================= */
 
 /* Tablet */
@@ -720,12 +760,12 @@ section.show {
         gap: 20px;
     }
     
-    .card {
+    .service-card {
         padding: 20px 15px;
         margin: 0 5px;
     }
     
-    .card h3 {
+    .service-card h3 {
         font-size: 1.2rem;
     }
     
@@ -838,7 +878,7 @@ section.show {
         font-size: 1.5rem;
     }
     
-    .card {
+    .service-card {
         padding: 15px 12px;
     }
     
@@ -945,33 +985,97 @@ section.show {
 <section id="services">
     <h2>Layanan Kami</h2>
     <div class="grid">
-        <div class="card">
+        <div class="service-card" onclick="toggleService(this)">
             <div class="service-icon">
                 <i class="fas fa-tools"></i>
             </div>
             <h3>Modifikasi Motor Custom</h3>
-            <p>Layanan modifikasi motor sesuai keinginan Anda, dari konsep hingga eksekusi dengan presisi tinggi.</p>
+            <p class="service-short-desc">Layanan modifikasi motor sesuai keinginan Anda.</p>
+            <div class="service-full-desc">
+                <p>Kami menawarkan layanan modifikasi motor custom lengkap mulai dari konsultasi konsep, desain, hingga eksekusi. Tim desainer kami akan membantu Anda mewujudkan motor impian dengan detail yang presisi. Kami menggunakan material berkualitas tinggi dan teknologi terkini untuk memastikan hasil yang maksimal.</p>
+                <p><strong>Fitur layanan:</strong></p>
+                <ul style="text-align: left; padding-left: 20px;">
+                    <li>Konsultasi desain custom gratis</li>
+                    <li>Modifikasi rangka dan body</li>
+                    <li>Upgrade sistem suspensi</li>
+                    <li>Instalasi aksesoris premium</li>
+                    <li>Garansi 1 tahun untuk semua modifikasi</li>
+                </ul>
+                <p><strong>Durasi pengerjaan:</strong> 2-4 minggu tergantung kompleksitas</p>
+            </div>
+            <div class="service-expand-icon">
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
-        <div class="card">
+        
+        <div class="service-card" onclick="toggleService(this)">
             <div class="service-icon">
                 <i class="fas fa-cogs"></i>
             </div>
             <h3>Perbaikan Mesin Sport</h3>
-            <p>Perbaikan dan tuning mesin motor sport oleh mekanik bersertifikat dengan alat canggih.</p>
+            <p class="service-short-desc">Perbaikan dan tuning mesin motor sport.</p>
+            <div class="service-full-desc">
+                <p>Layanan perbaikan dan tuning mesin motor sport untuk berbagai merk seperti Yamaha, Honda, Kawasaki, Suzuki, dan Ducati. Tim mekanik kami bersertifikasi dan berpengalaman dalam menangani masalah mesin mulai dari yang sederhana hingga kompleks.</p>
+                <p><strong>Fitur layanan:</strong></p>
+                <ul style="text-align: left; padding-left: 20px;">
+                    <li>Diagnosis komputerisasi mesin</li>
+                    <li>Overhaul mesin lengkap</li>
+                    <li>Tuning dan remapping ECU</li>
+                    <li>Perbaikan transmisi dan kopling</li>
+                    <li>Pengecekan dan perbaikan sistem pembakaran</li>
+                </ul>
+                <p><strong>Perlengkapan:</strong> Menggunakan alat diagnostik terbaru dan sparepart original untuk hasil terbaik.</p>
+            </div>
+            <div class="service-expand-icon">
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
-        <div class="card">
+        
+        <div class="service-card" onclick="toggleService(this)">
             <div class="service-icon">
                 <i class="fas fa-shopping-cart"></i>
             </div>
             <h3>Sparepart Original</h3>
-            <p>Penyediaan sparepart original untuk berbagai merk motor sport dengan garansi resmi.</p>
+            <p class="service-short-desc">Penyediaan sparepart original untuk berbagai merk.</p>
+            <div class="service-full-desc">
+                <p>Kami adalah distributor resmi sparepart untuk berbagai merk motor sport terkemuka. Semua sparepart yang kami sediakan adalah original dengan garansi resmi pabrik. Kami memiliki jaringan luas dengan supplier langsung dari pabrik untuk memastikan ketersediaan barang.</p>
+                <p><strong>Merk yang kami sediakan:</strong></p>
+                <ul style="text-align: left; padding-left: 20px;">
+                    <li>Yamaha Genuine Parts</li>
+                    <li>Honda Original Parts</li>
+                    <li>Kawasaki Genuine Parts</li>
+                    <li>Suzuki Original Parts</li>
+                    <li>Ducati Performance Parts</li>
+                    <li>Aksesoris premium seperti Yoshimura, Akrapovic, Brembo</li>
+                </ul>
+                <p><strong>Garansi:</strong> Semua sparepart dilengkapi dengan garansi resmi 6-12 bulan.</p>
+            </div>
+            <div class="service-expand-icon">
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
-        <div class="card">
+        
+        <div class="service-card" onclick="toggleService(this)">
             <div class="service-icon">
                 <i class="fas fa-paint-roller"></i>
             </div>
             <h3>Custom Paint & Sticker</h3>
-            <p>Layanan custom paint dan desain sticker untuk memberikan tampilan unik pada motor Anda.</p>
+            <p class="service-short-desc">Layanan custom paint dan desain sticker.</p>
+            <div class="service-full-desc">
+                <p>Memberikan tampilan unik pada motor Anda dengan layanan custom paint dan desain sticker profesional. Kami menggunakan cat automotive grade dengan teknologi clear coat yang tahan cuaca dan UV. Tim desainer grafis kami siap membantu Anda menciptakan desain yang personal dan menarik.</p>
+                <p><strong>Fitur layanan:</strong></p>
+                <ul style="text-align: left; padding-left: 20px;">
+                    <li>Konsultasi desain gratis</li>
+                    <li>Custom paint full body atau aksen</li>
+                    <li>Desain dan produksi sticker custom</li>
+                    <li>Finishing clear coat anti gores</li>
+                    <li>Airbrush artwork oleh seniman berpengalaman</li>
+                </ul>
+                <p><strong>Teknologi:</strong> Mengunakan cat basecoat-clearcoat system dengan garanti warna tidak pudar 3 tahun.</p>
+            </div>
+            <div class="service-expand-icon">
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
     </div>
 </section>
@@ -1005,7 +1109,7 @@ section.show {
 <section id="team">
     <h2>Tim Ahli Kami</h2>
     <div class="grid">
-        <div class="card team-member">
+        <div class="service-card team-member">
             <img src="sndi.jpg" alt="Sandi">
             <h3>Sandi</h3>
             <div class="motor-icon">
@@ -1014,7 +1118,7 @@ section.show {
             <p>CEO & Founder</p>
             <p>Spesialis motor custom dengan pengalaman 15 tahun</p>
         </div>
-        <div class="card team-member">
+        <div class="service-card team-member">
             <img src="prasya.jpg" alt="Prasya">
             <h3>Prasya</h3>
             <div class="motor-icon">
@@ -1023,7 +1127,7 @@ section.show {
             <p>CTO & Head Mechanic</p>
             <p>Ahli mesin motor sport bersertifikasi internasional</p>
         </div>
-        <div class="card team-member">
+        <div class="service-card team-member">
             <img src="thul.jpg" alt="Fathul">
             <h3>Fathul</h3>
             <div class="motor-icon">
@@ -1039,21 +1143,21 @@ section.show {
 <section class="testimoni">
     <h2>Apa Kata Klien Kami</h2>
     <div class="grid">
-        <div class="card">
+        <div class="service-card">
             <div class="quote-icon">
                 <i class="fas fa-quote-left"></i>
             </div>
             <h3>Budi Santoso</h3>
             <p>"Motor Yamaha R6 saya dimodifikasi dengan hasil yang luar biasa. Tim sangat profesional dan detail-oriented. Recommended!"</p>
         </div>
-        <div class="card">
+        <div class="service-card">
             <div class="quote-icon">
                 <i class="fas fa-quote-left"></i>
             </div>
             <h3>Ani Wijaya</h3>
             <p>"Pelayanan terbaik! Sparepart original dengan harga kompetitif. Motor Ducati saya sekarang performanya seperti baru."</p>
         </div>
-        <div class="card">
+        <div class="service-card">
             <div class="quote-icon">
                 <i class="fas fa-quote-left"></i>
             </div>
@@ -1201,6 +1305,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+/* ===== TOGGLE SERVICE DESCRIPTION ===== */
+function toggleService(card) {
+    // Tutup semua kartu layanan lainnya
+    const allCards = document.querySelectorAll('.service-card');
+    allCards.forEach(otherCard => {
+        if (otherCard !== card && otherCard.classList.contains('active')) {
+            otherCard.classList.remove('active');
+        }
+    });
+    
+    // Buka/tutup kartu yang diklik
+    card.classList.toggle('active');
+}
 </script>
 
 </body>
