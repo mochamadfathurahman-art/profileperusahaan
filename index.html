@@ -1,1628 +1,3485 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PT MotorSport Indonesia - Spesialis Motor Sport & Custom</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karate-Do Store - Perlengkapan Karate Berkualitas Bogor</title>
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<!-- ================= CSS ================= -->
-<style>
-/* RESET & VARIABLES */
-:root {
-    --primary: #e60000;
-    --primary-dark: #b30000;
-    --secondary: #1a1a1a;
-    --accent: #ffcc00;
-    --light: #f8f9fa;
-    --gray: #6c757d;
-    --transition: all 0.3s ease;
-}
+        :root {
+            --primary: #1a1a1a;
+            --primary-dark: #000000;
+            --secondary: #c41e3a; /* Merah karate */
+            --secondary-light: #e44a5e;
+            --accent: #d4a373;
+            --dark: #0b0b0b;
+            --light: #faf7f2;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --gradient: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+            --gradient-red: linear-gradient(135deg, #c41e3a, #e44a5e);
+            --success: #28a745;
+            --danger: #dc3545;
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--light);
+        }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    overflow-x: hidden;
-    background-color: #f5f5f5;
-}
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
 
-/* ===== NAVBAR ===== */
-nav {
-    position: sticky;
-    top: 0;
-    background: rgba(26, 26, 26, 0.98);
-    padding: 15px 0;
-    text-align: center;
-    z-index: 1000;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    backdrop-filter: blur(10px);
-}
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
 
-nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    position: relative;
-    padding: 5px 0;
-    transition: var(--transition);
-    display: inline-block;
-}
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            color: var(--primary);
+        }
 
-nav a i {
-    margin-right: 5px;
-    font-size: 0.9rem;
-}
+        .section-header h2 span {
+            color: var(--secondary);
+        }
 
-nav a:hover {
-    color: var(--accent);
-}
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient-red);
+            border-radius: 2px;
+        }
 
-nav a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background: var(--accent);
-    bottom: 0;
-    left: 0;
-    transition: var(--transition);
-}
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-nav a:hover::after {
-    width: 100%;
-}
+        /* ===== ALERT MESSAGES ===== */
+        .alert {
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 1200px;
+            text-align: center;
+            animation: slideDown 0.5s ease;
+        }
 
-/* ===== HAMBURGER MENU FOR MOBILE ===== */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 10px;
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    z-index: 1001;
-}
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
 
-/* ===== HERO ===== */
-header {
-    height: 100vh;
-    min-height: 600px;
-    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.7)),
-                url("https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80") center/cover fixed;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(196, 30, 58, 0.2);
+        }
+
+        .navbar.scrolled {
+            padding: 0.8rem 5%;
+            background: var(--primary);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .logo i {
+            color: var(--secondary);
+            font-size: 2.2rem;
+        }
+
+        .logo span {
+            color: var(--secondary);
+            font-weight: 300;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-red);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+                        url('https://images.unsplash.com/photo-1555597673-b21d5c935865?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path d="M20 30 L40 10 L60 30 L80 10 L90 30 L70 50 L90 70 L70 90 L50 70 L30 90 L10 70 L30 50 L10 30 Z" fill="none" stroke="%23c41e3a" stroke-width="1"/></svg>');
+            background-size: 100px;
+            animation: patternMove 20s linear infinite;
+        }
+
+        @keyframes patternMove {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .hero-content {
+            max-width: 700px;
+            color: white;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 span {
+            color: var(--secondary);
+            display: block;
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 5px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(196, 30, 58, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .stat p {
+            font-size: 0.9rem;
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 20px 20px 0 var(--secondary);
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--gradient-red);
+            padding: 2rem;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 30px rgba(196, 30, 58, 0.3);
+        }
+
+        .about-badge h4 {
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+
+        .about-badge p {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .about-content h3 span {
+            color: var(--secondary);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .feature i {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .feature span {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* ===== COLLECTION SECTION ===== */
+        .collection {
+            padding: 6rem 5%;
+            background: var(--light);
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(196, 30, 58, 0.2);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-image {
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+
+        .product-overlay button {
+            background: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .product-overlay button:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .product-category {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .product-price span {
+            font-size: 0.9rem;
+            color: var(--gray);
+            text-decoration: line-through;
+            font-weight: 400;
+        }
+
+        .product-rating {
+            color: #ffc107;
+            margin: 0.5rem 0;
+        }
+
+        /* ===== QUICK VIEW MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 20px;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .modal-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 400px;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-details {
+            padding: 1rem 0;
+        }
+
+        .modal-details h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .modal-details p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-details .modal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-meta-item {
+            background: var(--light);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .modal-meta-item i {
+            margin-right: 0.5rem;
+        }
+
+        /* ===== LOOKBOOK SECTION ===== */
+        .lookbook {
+            padding: 6rem 5%;
+            background: var(--primary);
+            color: white;
+        }
+
+        .lookbook .section-header h2,
+        .lookbook .section-header p {
+            color: white;
+        }
+
+        .lookbook .section-header h2::after {
+            background: var(--secondary);
+        }
+
+        .lookbook-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .lookbook-item {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+
+        .lookbook-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: 610px;
+        }
+
+        .lookbook-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .lookbook-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .lookbook-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .lookbook-item:hover .lookbook-overlay {
+            opacity: 1;
+        }
+
+        .lookbook-overlay h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .lookbook-overlay p {
+            color: var(--secondary);
+            font-size: 1rem;
+        }
+
+        .lookbook-quick-view {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            z-index: 5;
+        }
+
+        .lookbook-item:hover .lookbook-quick-view {
+            opacity: 1;
+        }
+
+        .lookbook-quick-view:hover {
+            background: white;
+            color: var(--secondary);
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials {
+            padding: 6rem 5%;
+            background: var(--light);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-card {
+            min-width: 100%;
+            padding: 2rem;
+        }
+
+        .testimonial-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            position: relative;
+        }
+
+        .testimonial-content::before {
+            content: '\f10d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            font-size: 3rem;
+            color: var(--secondary);
+            opacity: 0.2;
+        }
+
+        .testimonial-content img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--secondary);
+        }
+
+        .testimonial-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        .testimonial-content h4 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-content span {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-btn {
+            background: var(--secondary);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .testimonial-btn:hover {
+            background: var(--primary);
+        }
+
+        .testimonial-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: var(--secondary);
+            transform: scale(1.2);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .contact-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--primary);
+        }
+
+        .contact-details p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .contact-social h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            background: var(--light);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.1);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient-red);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-form button:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(196, 30, 58, 0.3);
+        }
+
+        /* ===== MESSAGES TABLE ===== */
+        .messages-section {
+            padding: 6rem 5%;
+            background: var(--light);
+        }
+
+        .table-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .table-header {
+            padding: 2rem;
+            background: var(--gradient);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .table-header h3 {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .message-count {
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: var(--light);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        tr:hover {
+            background: var(--light);
+        }
+
+        .delete-btn {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .delete-btn:hover {
+            background: #c82333;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--gray);
+        }
+
+        .no-data i {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+            color: var(--secondary);
+        }
+
+        .no-data h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .no-data p {
+            color: var(--gray);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-logo h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-logo i {
+            color: var(--secondary);
+        }
+
+        .footer-logo p {
+            color: #9ca3af;
+            line-height: 1.8;
+        }
+
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-newsletter h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .footer-newsletter p {
+            color: #9ca3af;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .newsletter-form input::placeholder {
+            color: #9ca3af;
+        }
+
+        .newsletter-form button {
+            padding: 0.8rem 1.2rem;
+            background: var(--secondary);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--secondary-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .lookbook-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .lookbook-item.large {
+                grid-column: span 1;
+                grid-row: span 1;
+                height: 300px;
+            }
+
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+                transition: left 0.3s;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content h1 span {
+                font-size: 2rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .collection-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-body {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .modal-details h2 {
+                font-size: 1.5rem;
+            }
+
+            .lookbook-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .lookbook-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+        }
+
+        /* ===== FOUNDER SECTION ===== */
+        .founder {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #faf7f2 0%, #ffffff 100%);
+        }
+
+        .founder-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .founder-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .founder-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 40px 80px rgba(196, 30, 58, 0.3);
+        }
+
+        .founder-image {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .founder-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .founder-card:hover .founder-image img {
+            transform: scale(1.05);
+        }
+
+        .founder-social {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            transition: bottom 0.4s ease;
+        }
+
+        .founder-card:hover .founder-social {
+            bottom: 0;
+        }
+
+        .founder-social a {
+            width: 45px;
+            height: 45px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .founder-card:hover .founder-social a {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .founder-social a:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .founder-social a:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .founder-social a:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .founder-social a:hover {
+            background: white;
+            color: var(--secondary);
+            transform: translateY(-5px) !important;
+        }
+
+        .founder-info {
+            padding: 2.5rem 2rem;
+            text-align: center;
+            background: white;
+        }
+
+        .founder-info h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .founder-position {
+            color: var(--secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(196, 30, 58, 0.1);
+            border-radius: 50px;
+        }
+
+        .founder-bio {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 1rem;
+        }
+
+        .founder-bio::before,
+        .founder-bio::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--secondary);
+            opacity: 0.3;
+            position: absolute;
+            font-family: serif;
+        }
+
+        .founder-bio::before {
+            top: -20px;
+            left: 0;
+        }
+
+        .founder-bio::after {
+            bottom: -40px;
+            right: 0;
+        }
+
+        /* Founder Stats */
+        .founder-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(196, 30, 58, 0.2);
+        }
+
+        .founder-stats .stat {
+            text-align: center;
+        }
+
+        .founder-stats .stat h4 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .founder-stats .stat p {
+            font-size: 0.8rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .founder-image {
+                height: 350px;
+            }
+            
+            .founder-info h3 {
+                font-size: 1.8rem;
+            }
+            
+            .founder-bio {
+                font-size: 0.95rem;
+            }
+            
+            .founder-stats {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .founder-image {
+                height: 300px;
+            }
+            
+            .founder-info {
+                padding: 2rem 1.5rem;
+            }
+            
+            .founder-info h3 {
+                font-size: 1.5rem;
+            }
+            
+            .founder-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        /* ===== MATERIALS SECTION IMPROVED ===== */
+.materials {
+    padding: 6rem 5%;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     position: relative;
     overflow: hidden;
-    padding: 0 20px;
 }
 
-.hero-content {
-    max-width: 900px;
-    padding: 0 20px;
-    animation: fadeInUp 1.5s ease;
-    z-index: 2;
-}
-
-.hero-content h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-    line-height: 1.2;
-}
-
-.hero-content h1 span {
-    color: var(--primary);
-}
-
-.hero-content p {
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    margin-bottom: 30px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.5;
-}
-
-.cta-button {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: var(--transition);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 5px 15px rgba(230, 0, 0, 0.3);
-}
-
-.cta-button:hover {
-    background: var(--primary-dark);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(230, 0, 0, 0.4);
-}
-
-/* Motor animation in hero */
-.motor-animation {
+.materials::before {
+    content: '';
     position: absolute;
-    bottom: 0;
-    right: -100px;
-    width: 500px;
-    height: 300px;
-    background: url("https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80") center/cover;
-    filter: drop-shadow(0 0 10px rgba(230, 0, 0, 0.5));
-    animation: moveMotor 25s linear infinite;
-    opacity: 0.7;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--gradient-red);
 }
 
-/* ===== SECTION ===== */
-section {
-    padding: 80px 20px;
+.materials-showcase {
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
 }
 
-section h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    color: var(--secondary);
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
-    padding-bottom: 15px;
-    line-height: 1.3;
-}
-
-section h2::after {
-    content: '';
-    position: absolute;
-    width: 80px;
-    height: 4px;
-    background: var(--primary);
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* ===== GRID ===== */
-.grid {
+.materials-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
 }
 
-/* ===== SERVICES ===== */
-.service-card {
+.material-card {
     background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transition: var(--transition);
-    text-align: center;
-    border-top: 4px solid var(--primary);
+    border-radius: 20px;
     overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     position: relative;
-    cursor: pointer;
+    border: 1px solid rgba(196, 30, 58, 0.1);
 }
 
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background: var(--primary);
-    transition: var(--transition);
-    z-index: 0;
+.material-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 45px rgba(196, 30, 58, 0.2);
+    border-color: var(--secondary);
 }
 
-.service-card:hover::before {
-    height: 100%;
-    opacity: 0.1;
-}
-
-.service-card h3 {
-    margin-bottom: 15px;
-    color: var(--primary);
-    font-size: 1.3rem;
+.material-icon-wrapper {
     position: relative;
-    z-index: 1;
-    line-height: 1.4;
-}
-
-.service-short-desc {
-    position: relative;
-    z-index: 1;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 10px;
-    transition: var(--transition);
-}
-
-.service-full-desc {
-    position: relative;
-    z-index: 1;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    text-align: justify;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: all 0.5s ease;
-    margin-top: 0;
-    padding-top: 0;
-}
-
-.service-card.active .service-full-desc {
-    max-height: 500px;
-    opacity: 1;
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px dashed #ddd;
-}
-
-.service-icon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    color: var(--primary);
-    transition: var(--transition);
-}
-
-.service-card.active .service-icon {
-    transform: rotate(10deg);
-    color: var(--primary-dark);
-}
-
-.service-expand-icon {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    color: var(--primary);
-    font-size: 0.9rem;
-    transition: var(--transition);
-}
-
-.service-card.active .service-expand-icon {
-    transform: rotate(180deg);
-    color: var(--primary-dark);
-}
-
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-}
-
-/* ===== ABOUT ===== */
-#about {
-    background-color: white;
-}
-
-.about-content {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.about-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-.about-text h3 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    color: var(--secondary);
-}
-
-.about-text p {
-    margin-bottom: 15px;
-    text-align: justify;
-}
-
-.about-image {
-    flex: 1;
-    min-width: 300px;
-    height: 350px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-}
-
-.about-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
-}
-
-.about-image:hover img {
-    transform: scale(1.05);
-}
-
-/* ===== PORTFOLIO ===== */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.portfolio-item {
-    height: 220px;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.portfolio-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
-}
-
-.portfolio-item:hover img {
-    transform: scale(1.1);
-}
-
-.portfolio-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(230, 0, 0, 0.8);
+    height: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    transition: var(--transition);
-    padding: 20px;
+    background: linear-gradient(135deg, #faf7f2 0%, #ffffff 100%);
+    border-bottom: 1px solid rgba(196, 30, 58, 0.1);
 }
 
-.portfolio-item:hover .portfolio-overlay {
-    opacity: 1;
-}
-
-.portfolio-overlay h3 {
-    color: white;
-    font-size: 1.3rem;
-    text-align: center;
-}
-
-/* ===== TEAM ===== */
-.team-member {
-    text-align: center;
-    padding: 20px;
-}
-
-.team-member img {
-    width: 150px;
-    height: 150px;
+.material-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-red);
     border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid var(--primary);
-    margin-bottom: 15px;
-    transition: var(--transition);
-}
-
-.team-member:hover img {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(230, 0, 0, 0.5);
-}
-
-.motor-icon {
-    color: var(--primary);
-    font-size: 1.3rem;
-    margin: 10px 0;
-}
-
-/* ===== TESTIMONI YANG DIUBAH ===== */
-.testimoni {
-    background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
-                url("https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80") center/cover fixed;
-    color: white;
-}
-
-.testimoni h2 {
-    color: white;
-}
-
-.testimoni h2::after {
-    background: var(--accent);
-}
-
-.testimoni-slider {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 15px;
-}
-
-.testimoni-container {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2.5rem;
+    box-shadow: 0 10px 20px rgba(196, 30, 58, 0.3);
+    transition: all 0.4s ease;
+    border: 3px solid white;
 }
 
-.testimoni-card {
-    min-width: 100%;
-    padding: 40px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
+.material-card:hover .material-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: var(--secondary);
+}
+
+.material-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--secondary);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 3px 10px rgba(196, 30, 58, 0.3);
+}
+
+.material-content {
+    padding: 1.5rem;
+}
+
+.material-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    border: 1px solid rgba(255, 204, 0, 0.2);
-    position: relative;
 }
 
-.testimoni-card.active {
-    display: block;
+.material-content h3 span {
+    color: var(--secondary);
+    font-weight: 800;
 }
 
-.client-photo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--accent);
-    margin: 0 auto 20px;
-    display: block;
+.material-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    margin-bottom: 1rem;
+    color: #ffc107;
 }
 
-.quote-icon {
-    font-size: 2rem;
-    color: var(--accent);
-    margin-bottom: 20px;
-    display: block;
+.material-rating span {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-left: 0.3rem;
 }
 
-.testimoni-text {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 20px;
-    font-style: italic;
+.material-desc {
+    color: var(--gray);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    min-height: 60px;
 }
 
-.client-info {
+.material-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.material-feature {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    text-align: center;
+    gap: 0.3rem;
 }
 
-.client-name {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: var(--accent);
-}
-
-.client-motor {
-    font-size: 0.9rem;
-    color: #ddd;
-    margin-bottom: 10px;
-}
-
-.client-rating {
-    color: var(--accent);
-    font-size: 1.2rem;
-    margin: 10px 0;
-}
-
-.client-rating i {
-    margin: 0 2px;
-}
-
-.testimoni-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-    gap: 20px;
-}
-
-.testimoni-dots {
-    display: flex;
-    gap: 10px;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.dot.active {
-    background: var(--accent);
-    transform: scale(1.2);
-}
-
-.prev-btn, .next-btn {
-    background: rgba(255, 204, 0, 0.2);
-    border: 2px solid var(--accent);
-    color: var(--accent);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-}
-
-.prev-btn:hover, .next-btn:hover {
-    background: var(--accent);
-    color: #000;
-}
-
-/* ===== CONTACT ===== */
-form {
-    max-width: 700px;
-    margin: auto;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-}
-
-form input, form textarea {
-    width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.material-feature i {
+    color: var(--secondary);
     font-size: 1rem;
-    transition: var(--transition);
-    font-family: inherit;
 }
 
-form input:focus, form textarea:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(230, 0, 0, 0.1);
+.material-feature span {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--gray);
 }
 
-form button {
+/* Material Comparison Table */
+.material-comparison {
+    background: white;
+    border-radius: 30px;
+    padding: 3rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    margin-top: 2rem;
+}
+
+.material-comparison h3 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary);
+}
+
+.material-comparison h3 span {
+    color: var(--secondary);
+}
+
+.comparison-table {
     width: 100%;
-    padding: 15px;
+    border-collapse: collapse;
+    background: var(--light);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.comparison-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1.2fr 1.2fr 1fr 1.5fr;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.comparison-row:last-child {
+    border-bottom: none;
+}
+
+.comparison-row.header {
     background: var(--primary);
     color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-form button:hover {
-    background: var(--primary-dark);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(230, 0, 0, 0.2);
-}
-
-/* ===== FOOTER ===== */
-footer {
-    background: var(--secondary);
-    color: white;
-    text-align: center;
-    padding: 40px 20px;
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    text-align: left;
-    margin-bottom: 30px;
-}
-
-.footer-logo h3 {
-    color: var(--primary);
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.footer-logo p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-.footer-links h4, .footer-contact h4 {
-    color: var(--accent);
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-}
-
-.footer-links ul {
-    list-style: none;
-}
-
-.footer-links li {
-    margin-bottom: 8px;
-}
-
-.footer-links a {
-    color: #ddd;
-    text-decoration: none;
-    transition: var(--transition);
-    font-size: 0.95rem;
-    display: inline-block;
-    padding: 3px 0;
-}
-
-.footer-links a:hover {
-    color: var(--primary);
-    padding-left: 5px;
-}
-
-.footer-contact p {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    font-size: 0.95rem;
-}
-
-.footer-contact i {
-    margin-right: 10px;
-    color: var(--primary);
-    min-width: 20px;
-}
-
-.copyright {
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 20px;
-    margin-top: 20px;
     font-size: 0.9rem;
 }
 
-/* ===== ANIMASI ===== */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.comparison-cell {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-@keyframes moveMotor {
-    0% {
-        transform: translateX(-100px) rotateY(0deg);
-    }
-    50% {
-        transform: translateX(100vw) rotateY(0deg);
-    }
-    51% {
-        transform: translateX(100vw) rotateY(180deg);
-    }
-    100% {
-        transform: translateX(-100px) rotateY(180deg);
-    }
+.comparison-row.header .comparison-cell {
+    color: white;
 }
 
-/* Section hidden (awal) */
-section {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s ease;
+.comparison-row:not(.header):hover {
+    background: rgba(196, 30, 58, 0.05);
 }
 
-/* Section muncul saat discroll */
-section.show {
-    opacity: 1;
-    transform: translateY(0);
+.comparison-cell .fa-star, 
+.comparison-cell .fa-star-half-alt {
+    color: #ffc107;
+    margin-right: 0.1rem;
 }
 
-/* ================= RESPONSIVE BREAKPOINTS ================= */
-
-/* Tablet */
+/* Responsive */
 @media (max-width: 1024px) {
-    section {
-        padding: 60px 20px;
+    .materials-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
     
-    .hero-content h1 {
-        font-size: 2.8rem;
-    }
-    
-    .grid {
-        gap: 20px;
-    }
-    
-    .portfolio-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-    
-    .testimoni-card {
-        padding: 30px 20px;
+    .comparison-row {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
-    /* Hamburger Menu */
-    .menu-toggle {
-        display: block;
+    .materials-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
     }
     
-    nav {
-        display: flex;
+    .material-comparison {
+        padding: 1.5rem;
+        overflow-x: auto;
+    }
+    
+    .comparison-table {
+        min-width: 600px;
+    }
+}
+/* ===== VISI MISI SECTION ===== */
+.vision-mission {
+    padding: 6rem 5%;
+    background: linear-gradient(135deg, #ffffff 0%, #faf7f2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.vision-mission::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: var(--gradient-red);
+    opacity: 0.03;
+    border-radius: 50%;
+    transform: translate(150px, -150px);
+}
+
+.vision-mission::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    background: var(--gradient-red);
+    opacity: 0.03;
+    border-radius: 50%;
+    transform: translate(-200px, 200px);
+}
+
+.vision-mission-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Visi Card */
+.vision-card {
+    background: white;
+    border-radius: 40px;
+    padding: 3rem;
+    margin-bottom: 4rem;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(196, 30, 58, 0.1);
+    transition: all 0.4s ease;
+}
+
+.vision-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 40px 80px rgba(196, 30, 58, 0.15);
+    border-color: var(--secondary);
+}
+
+.vision-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--gradient-red);
+}
+
+.vision-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 25px rgba(196, 30, 58, 0.3);
+}
+
+.vision-icon i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.vision-card h3 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.vision-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-red);
+    border-radius: 2px;
+}
+
+.vision-content {
+    max-width: 800px;
+}
+
+.vision-content p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: var(--gray);
+    font-style: italic;
+    position: relative;
+    padding-left: 2rem;
+    border-left: 3px solid var(--secondary-light);
+}
+
+.vision-quote {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    font-size: 5rem;
+    color: var(--secondary);
+    opacity: 0.1;
+}
+
+/* Mission Grid */
+.mission-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.mission-card {
+    background: white;
+    border-radius: 30px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(196, 30, 58, 0.1);
+}
+
+.mission-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(196, 30, 58, 0.15);
+    border-color: var(--secondary);
+}
+
+.mission-number {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--secondary);
+    opacity: 0.15;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1;
+}
+
+.mission-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--gradient-red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 20px rgba(196, 30, 58, 0.2);
+    transition: all 0.4s ease;
+}
+
+.mission-card:hover .mission-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.mission-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.mission-card h4 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.mission-card h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--gradient-red);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.mission-card:hover h4::after {
+    width: 60px;
+}
+
+.mission-card p {
+    color: var(--gray);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.mission-hover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: var(--gradient-red);
+    opacity: 0;
+    border-radius: 0 0 0 100%;
+    transition: all 0.4s ease;
+    z-index: 0;
+}
+
+.mission-card:hover .mission-hover {
+    opacity: 0.03;
+    width: 150px;
+    height: 150px;
+}
+
+/* Philosophy Strip */
+.philosophy-strip {
+    max-width: 1200px;
+    margin: 4rem auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 50px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(196, 30, 58, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.philosophy-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    transition: all 0.3s ease;
+}
+
+.philosophy-item:hover {
+    transform: translateY(-5px);
+}
+
+.philosophy-item i {
+    font-size: 2rem;
+    color: var(--secondary);
+    transition: all 0.3s ease;
+}
+
+.philosophy-item:hover i {
+    transform: scale(1.2);
+    color: var(--primary);
+}
+
+.philosophy-item span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.philosophy-item:hover span {
+    color: var(--secondary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .mission-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .philosophy-strip {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        border-radius: 30px;
+    }
+    
+    .philosophy-item {
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .vision-card {
+        padding: 2rem;
+    }
+    
+    .vision-content p {
+        font-size: 1.1rem;
+        padding-left: 1rem;
+    }
+    
+    .mission-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .philosophy-strip {
         flex-direction: column;
         align-items: flex-start;
-        padding: 60px 20px 20px;
-        height: auto;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
+        padding: 1.5rem;
+        border-radius: 20px;
     }
     
-    nav.active {
-        max-height: 500px;
-    }
-    
-    nav a {
-        display: block;
-        margin: 10px 0;
+    .philosophy-item {
+        flex-direction: row;
         width: 100%;
-        text-align: left;
-        padding: 10px 0;
-        font-size: 1rem;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
+        gap: 1rem;
     }
     
-    nav a:last-child {
-        border-bottom: none;
-    }
-    
-    nav a i {
-        width: 25px;
-        text-align: center;
-    }
-    
-    /* Hero Section */
-    header {
-        min-height: 500px;
-        padding-top: 80px;
-    }
-    
-    .hero-content {
-        padding: 0 10px;
-    }
-    
-    .hero-content h1 {
-        font-size: 2.2rem;
-        letter-spacing: 1px;
-        margin-bottom: 15px;
-    }
-    
-    .hero-content p {
-        font-size: 1rem;
-        margin-bottom: 25px;
-        padding: 0 10px;
-    }
-    
-    .cta-button {
-        padding: 12px 30px;
-        font-size: 1rem;
-    }
-    
-    .motor-animation {
-        display: none;
-    }
-    
-    /* Section Styling */
-    section {
-        padding: 50px 15px;
-    }
-    
-    section h2 {
-        font-size: 1.8rem;
-        margin-bottom: 30px;
-        padding-bottom: 10px;
-    }
-    
-    section h2::after {
-        width: 60px;
-        height: 3px;
-    }
-    
-    /* Grid & Cards */
-    .grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .service-card {
-        padding: 20px 15px;
-        margin: 0 5px;
-    }
-    
-    .service-card h3 {
-        font-size: 1.2rem;
-    }
-    
-    /* About Section */
-    .about-content {
-        flex-direction: column;
-        gap: 30px;
-    }
-    
-    .about-text, .about-image {
-        min-width: 100%;
-    }
-    
-    .about-image {
-        height: 250px;
-        order: -1;
-    }
-    
-    .about-text h3 {
-        font-size: 1.3rem;
-    }
-    
-    /* Portfolio */
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .portfolio-item {
-        height: 200px;
-    }
-    
-    /* Testimoni Mobile */
-    .testimoni-slider {
-        margin: 0 10px;
-    }
-    
-    .testimoni-card {
-        padding: 25px 15px;
-    }
-    
-    .client-photo {
-        width: 80px;
-        height: 80px;
-    }
-    
-    .testimoni-text {
-        font-size: 1rem;
-    }
-    
-    /* Team */
-    .team-member img {
-        width: 120px;
-        height: 120px;
-    }
-    
-    .team-member h3 {
-        font-size: 1.2rem;
-    }
-    
-    /* Contact Form */
-    form {
-        padding: 20px 15px;
-        margin: 0 10px;
-    }
-    
-    form input, form textarea {
-        padding: 10px 12px;
-        font-size: 0.95rem;
-    }
-    
-    /* Footer */
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 25px;
-        text-align: center;
-    }
-    
-    .footer-logo h3 {
-        justify-content: center;
-    }
-    
-    .footer-links ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-    }
-    
-    .footer-links li {
-        margin-bottom: 0;
-    }
-    
-    .footer-links a {
-        padding: 5px 10px;
-        background: rgba(255,255,255,0.05);
-        border-radius: 5px;
-    }
-    
-    .footer-contact p {
-        justify-content: center;
-        text-align: center;
-    }
-    
-    .footer-contact i {
-        margin-right: 8px;
-    }
-    
-    .copyright {
-        font-size: 0.85rem;
-        padding-top: 15px;
-        margin-top: 15px;
-    }
-}
-
-/* Small Mobile */
-@media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 1.8rem;
-    }
-    
-    section h2 {
+    .philosophy-item i {
         font-size: 1.5rem;
     }
-    
-    .service-card {
-        padding: 15px 12px;
-    }
-    
-    .service-icon {
+}
+
+@media (max-width: 480px) {
+    .vision-card h3 {
         font-size: 2rem;
     }
     
-    .portfolio-item {
-        height: 180px;
+    .vision-content p {
+        font-size: 1rem;
     }
     
-    .testimoni-card {
-        padding: 20px 12px;
+    .mission-card {
+        padding: 1.5rem;
     }
     
-    .client-photo {
-        width: 70px;
-        height: 70px;
-    }
-    
-    .testimoni-text {
-        font-size: 0.95rem;
-    }
-    
-    .team-member img {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .footer-links ul {
-        flex-direction: column;
-        gap: 10px;
+    .mission-card h4 {
+        font-size: 1.3rem;
     }
 }
-
-/* Landscape Mode */
-@media (max-height: 600px) and (orientation: landscape) {
-    header {
-        height: auto;
-        min-height: 100vh;
-        padding: 100px 20px 50px;
-    }
-    
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    nav {
-        padding: 15px 0;
-    }
-    
-    nav a {
-        margin: 0 10px;
-        font-size: 0.9rem;
-    }
-}
-
-/* Prevent horizontal scroll */
-@media (max-width: 768px) {
-    html, body {
-        max-width: 100%;
-        overflow-x: hidden;
-    }
-    
-    .container {
-        overflow-x: hidden;
-    }
-}
-</style>
-
-<!-- Font Awesome untuk ikon -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </style>
 </head>
-
 <body>
-
-<!-- ================= NAVBAR ================= -->
-<button class="menu-toggle" id="menuToggle">
-    <i class="fas fa-bars"></i>
-</button>
-<nav id="mainNav">
-    <a href="#home"><i class="fas fa-home"></i> Home</a>
-    <a href="#about"><i class="fas fa-info-circle"></i> Tentang</a>
-    <a href="#services"><i class="fas fa-cogs"></i> Layanan</a>
-    <a href="#portfolio"><i class="fas fa-images"></i> Portofolio</a>
-    <a href="#team"><i class="fas fa-users"></i> Tim</a>
-    <a href="#contact"><i class="fas fa-phone-alt"></i> Kontak</a>
-</nav>
-
-<!-- ================= HERO ================= -->
-<header id="home">
-    <div class="hero-content">
-        <h1>PT <span>MotorSport</span> Indonesia</h1>
-        <p>Spesialis Motor Sport, Custom, dan Aksesoris Berkualitas Tinggi. Menghadirkan solusi terbaik untuk kebutuhan motor Anda sejak 2010.</p>
-        <button onclick="scrollToContact()" class="cta-button">Konsultasi Gratis</button>
-    </div>
-    <div class="motor-animation"></div>
-</header>
-
-<!-- ================= ABOUT ================= -->
-<section id="about">
-    <h2>Tentang Kami</h2>
-    <div class="about-content">
-        <div class="about-image">
-            <img src="logo.png" alt="Bengkel MotorSport Indonesia">
-        </div>
-        <div class="about-text">
-            <h3>Spesialis Motor Sport & Custom Terpercaya</h3>
-            <p>PT MotorSport Indonesia adalah perusahaan terkemuka di industri motor sport dan custom. Dengan pengalaman lebih dari 10 tahun, kami telah melayani ribuan pelanggan dari berbagai kota di Indonesia.</p>
-            <p>Kami mengkhususkan diri dalam modifikasi motor, penjualan sparepart original, dan perbaikan mesin motor sport. Tim mekanik kami bersertifikat dan berpengalaman dalam menangani berbagai merk motor terkenal.</p>
-            <p>Visi kami adalah menjadi perusahaan terdepan dalam industri motor sport di Asia Tenggara dengan memberikan pelayanan terbaik dan produk berkualitas tinggi.</p>
-        </div>
-    </div>
-</section>
-
-<!-- ================= SERVICES ================= -->
-<section id="services">
-    <h2>Layanan Kami</h2>
-    <div class="grid">
-        <div class="service-card" onclick="toggleService(this)">
-            <div class="service-icon">
-                <i class="fas fa-tools"></i>
-            </div>
-            <h3>Modifikasi Motor Custom</h3>
-            <p class="service-short-desc">Layanan modifikasi motor sesuai keinginan Anda.</p>
-            <div class="service-full-desc">
-                <p>Kami menawarkan layanan modifikasi motor custom lengkap mulai dari konsultasi konsep, desain, hingga eksekusi. Tim desainer kami akan membantu Anda mewujudkan motor impian dengan detail yang presisi. Kami menggunakan material berkualitas tinggi dan teknologi terkini untuk memastikan hasil yang maksimal.</p>
-                <p><strong>Fitur layanan:</strong></p>
-                <ul style="text-align: left; padding-left: 20px;">
-                    <li>Konsultasi desain custom gratis</li>
-                    <li>Modifikasi rangka dan body</li>
-                    <li>Upgrade sistem suspensi</li>
-                    <li>Instalasi aksesoris premium</li>
-                    <li>Garansi 1 tahun untuk semua modifikasi</li>
-                </ul>
-                <p><strong>Durasi pengerjaan:</strong> 2-4 minggu tergantung kompleksitas</p>
-            </div>
-            <div class="service-expand-icon">
-                <i class="fas fa-chevron-down"></i>
-            </div>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <i class="fas fa-fist-raised"></i>
+            Karate-Do<span>Store Bogor</span>
         </div>
         
-        <div class="service-card" onclick="toggleService(this)">
-            <div class="service-icon">
-                <i class="fas fa-cogs"></i>
-            </div>
-            <h3>Perbaikan Mesin Sport</h3>
-            <p class="service-short-desc">Perbaikan dan tuning mesin motor sport.</p>
-            <div class="service-full-desc">
-                <p>Layanan perbaikan dan tuning mesin motor sport untuk berbagai merk seperti Yamaha, Honda, Kawasaki, Suzuki, dan Ducati. Tim mekanik kami bersertifikasi dan berpengalaman dalam menangani masalah mesin mulai dari yang sederhana hingga kompleks.</p>
-                <p><strong>Fitur layanan:</strong></p>
-                <ul style="text-align: left; padding-left: 20px;">
-                    <li>Diagnosis komputerisasi mesin</li>
-                    <li>Overhaul mesin lengkap</li>
-                    <li>Tuning dan remapping ECU</li>
-                    <li>Perbaikan transmisi dan kopling</li>
-                    <li>Pengecekan dan perbaikan sistem pembakaran</li>
-                </ul>
-                <p><strong>Perlengkapan:</strong> Menggunakan alat diagnostik terbaru dan sparepart original untuk hasil terbaik.</p>
-            </div>
-            <div class="service-expand-icon">
-                <i class="fas fa-chevron-down"></i>
-            </div>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
         </div>
         
-        <div class="service-card" onclick="toggleService(this)">
-            <div class="service-icon">
-                <i class="fas fa-shopping-cart"></i>
-            </div>
-            <h3>Sparepart Original</h3>
-            <p class="service-short-desc">Penyediaan sparepart original untuk berbagai merk.</p>
-            <div class="service-full-desc">
-                <p>Kami adalah distributor resmi sparepart untuk berbagai merk motor sport terkemuka. Semua sparepart yang kami sediakan adalah original dengan garansi resmi pabrik. Kami memiliki jaringan luas dengan supplier langsung dari pabrik untuk memastikan ketersediaan barang.</p>
-                <p><strong>Merk yang kami sediakan:</strong></p>
-                <ul style="text-align: left; padding-left: 20px;">
-                    <li>Yamaha Genuine Parts</li>
-                    <li>Honda Original Parts</li>
-                    <li>Kawasaki Genuine Parts</li>
-                    <li>Suzuki Original Parts</li>
-                    <li>Ducati Performance Parts</li>
-                    <li>Aksesoris premium seperti Yoshimura, Akrapovic, Brembo</li>
-                </ul>
-                <p><strong>Garansi:</strong> Semua sparepart dilengkapi dengan garansi resmi 6-12 bulan.</p>
-            </div>
-            <div class="service-expand-icon">
-                <i class="fas fa-chevron-down"></i>
-            </div>
-        </div>
-        
-        <div class="service-card" onclick="toggleService(this)">
-            <div class="service-icon">
-                <i class="fas fa-paint-roller"></i>
-            </div>
-            <h3>Custom Paint & Sticker</h3>
-            <p class="service-short-desc">Layanan custom paint dan desain sticker.</p>
-            <div class="service-full-desc">
-                <p>Memberikan tampilan unik pada motor Anda dengan layanan custom paint dan desain sticker profesional. Kami menggunakan cat automotive grade dengan teknologi clear coat yang tahan cuaca dan UV. Tim desainer grafis kami siap membantu Anda menciptakan desain yang personal dan menarik.</p>
-                <p><strong>Fitur layanan:</strong></p>
-                <ul style="text-align: left; padding-left: 20px;">
-                    <li>Konsultasi desain gratis</li>
-                    <li>Custom paint full body atau aksen</li>
-                    <li>Desain dan produksi sticker custom</li>
-                    <li>Finishing clear coat anti gores</li>
-                    <li>Airbrush artwork oleh seniman berpengalaman</li>
-                </ul>
-                <p><strong>Teknologi:</strong> Mengunakan cat basecoat-clearcoat system dengan garanti warna tidak pudar 3 tahun.</p>
-            </div>
-            <div class="service-expand-icon">
-                <i class="fas fa-chevron-down"></i>
-            </div>
-        </div>
-    </div>
-</section>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#vison-mission">Visi-Misi</a></li>
+            <li><a href="#collection">Koleksi</a></li>
+            <li><a href="#materials">Material</a></li>
+            <li><a href="#founder">Pendiri</a></li>
+            <li><a href="#lookbook">Lookbook</a></li>
+            <li><a href="#contact">Kontak</a></li>
+            <li><a href="#lokasi">Lokasi</a></li>
+            <li><a href="#messages">Pesan <i class="fas fa-envelope"></i></a></li>
+        </ul>
+    </nav>
 
-<!-- ================= PORTFOLIO ================= -->
-<section id="portfolio">
-    <h2>Portofolio</h2>
-    <div class="portfolio-grid">
-        <div class="portfolio-item">
-            <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Motor Custom 1">
-            <div class="portfolio-overlay">
-                <h3>Harley Davidson Custom</h3>
-            </div>
-        </div>
-        <div class="portfolio-item">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1467&q=80" alt="Motor Custom 2">
-            <div class="portfolio-overlay">
-                <h3>Yamaha R1 Modifikasi</h3>
-            </div>
-        </div>
-        <div class="portfolio-item">
-            <img src="pp (1).jpeg" alt="Motor Custom 3">
-            <div class="portfolio-overlay">
-                <h3>Ducati Sport Custom</h3>
-            </div>
-        </div>
+    <!-- ===== ALERT MESSAGES ===== -->
+    <?php if ($status && $message): ?>
+    <div class="alert alert-<?php echo $status == 'success' ? 'success' : 'error'; ?>">
+        <?php echo htmlspecialchars($message); ?>
     </div>
-</section>
+    <?php endif; ?>
 
-<!-- ================= TEAM ================= -->
-<section id="team">
-    <h2>Tim Ahli Kami</h2>
-    <div class="grid">
-        <div class="service-card team-member">
-            <img src="sndi.jpg" alt="Sandi">
-            <h3>Sandi</h3>
-            <div class="motor-icon">
-                <i class="fas fa-motorcycle"></i>
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>
+                Karate-Do Bogor.
+                <span>Spirit. Technique. Strength.</span>
+            </h1>
+            <p>Temukan perlengkapan karate berkualitas tinggi untuk latihan dan kompetisi di Kota Bogor. Dari karategi, obi, hingga pelindung tubuh, kami sediakan untuk Anda.</p>
+            
+            <div class="hero-buttons">
+                <a href="#collection" class="btn btn-primary">Lihat Koleksi</a>
+                <a href="#about" class="btn btn-outline">Tentang Dojo</a>
             </div>
-            <p>CEO & Founder</p>
-            <p>Spesialis motor custom dengan pengalaman 15 tahun</p>
-        </div>
-        <div class="service-card team-member">
-            <img src="prasya.jpg" alt="Prasya">
-            <h3>Prasya</h3>
-            <div class="motor-icon">
-                <i class="fas fa-motorcycle"></i>
-            </div>
-            <p>CTO & Head Mechanic</p>
-            <p>Ahli mesin motor sport bersertifikasi internasional</p>
-        </div>
-        <div class="service-card team-member">
-            <img src="thul.jpg" alt="Fathul">
-            <h3>Fathul</h3>
-            <div class="motor-icon">
-                <i class="fas fa-motorcycle"></i>
-            </div>
-            <p>Lead Designer</p>
-            <p>Desainer custom paint & konsep motor unik</p>
-        </div>
-    </div>
-</section>
-
-<!-- ================= TESTIMONI YANG DIUBAH ================= -->
-<section class="testimoni">
-    <h2>Apa Kata Klien Kami</h2>
-    
-    <div class="testimoni-slider">
-        <div class="testimoni-container" id="testimoniContainer">
-            <!-- Testimonial 1 -->
-            <div class="testimoni-card">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Budi Santoso" class="client-photo">
-                <div class="quote-icon">
-                    <i class="fas fa-quote-right"></i>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <h3>50+</h3>
+                    <p>Produk Berkualitas</p>
                 </div>
-                <p class="testimoni-text">
-                    "Motor Yamaha R6 saya dimodifikasi dengan hasil yang luar biasa. Tim sangat profesional dan detail-oriented. Hasilnya melebihi ekspektasi saya. Recommended banget!"
-                </p>
-                <div class="client-info">
-                    <div class="client-name">Budi Santoso</div>
-                    <div class="client-motor">Yamaha R6 Custom</div>
-                    <div class="client-rating">
+                <div class="stat">
+                    <h3>1000+</h3>
+                    <p>Anggota Aktif</p>
+                </div>
+                <div class="stat">
+                    <h3>5+</h3>
+                    <p>Cabang Dojo Bogor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section class="about" id="about">
+        <div class="section-header">
+            <h2>Tentang <span>Karate-Do Store Bogor</span></h2>
+            <p>Dojo dan toko perlengkapan karate terpercaya di Bogor sejak 2010</p>
+        </div>
+        
+        <div class="about-container">
+            <div class="about-image">
+                <img src="inkai.png" alt="Dojo Karate Bogor">
+                <div class="about-badge">
+                    <h4>2010</h4>
+                    <p>Berdiri</p>
+                </div>
+            </div>
+            
+            <div class="about-content">
+                <h3>Lebih dari Sekedar <span>Perlengkapan</span></h3>
+                <p>Karate-Do Store Bogor didirikan pada tahun 2010 oleh Sensei Agung Prasetyo, seorang instruktur karate berpengalaman di Kota Bogor. Kami tidak hanya menjual perlengkapan, tetapi juga membangun komunitas karateka yang solid di Bogor dan sekitarnya.</p>
+                <p>Setiap produk yang kami jual telah melalui uji ketahanan dan kenyamanan. Kami bekerja sama dengan produsen terpercaya untuk memastikan karategi, obi, dan pelindung yang kami jual memenuhi standar kompetisi nasional dan internasional.</p>
+                
+                <div class="about-features">
+                    <div class="feature">
+                        <i class="fas fa-check"></i>
+                        <span>Standar Kompetisi</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-check"></i>
+                        <span>Bahan Berkualitas</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-check"></i>
+                        <span>Desain Fungsional</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-check"></i>
+                        <span>Garansi Produk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VISI MISI SECTION ===== -->
+<section class="vision-mission" id="vision-mission">
+    <div class="section-header">
+        <h2>Visi & <span>Misi</span></h2>
+        <p>Semangat dan tujuan Karate-Do Store Bogor dalam membangun karateka Indonesia</p>
+    </div>
+    
+    <div class="vision-mission-container">
+        <!-- Visi Card -->
+        <div class="vision-card">
+            <div class="vision-icon">
+                <i class="fas fa-eye"></i>
+            </div>
+            <h3>Visi</h3>
+            <div class="vision-content">
+                <p>Menjadi pusat pengembangan karate terdepan di Bogor yang melahirkan generasi karateka berprestasi, berkarakter, dan berakhlak mulia, serta diakui secara nasional dan internasional.</p>
+            </div>
+            <div class="vision-quote">
+                <i class="fas fa-quote-right"></i>
+            </div>
+        </div>
+        
+        <!-- Misi Cards -->
+        <div class="mission-grid">
+            <div class="mission-card">
+                <div class="mission-number">01</div>
+                <div class="mission-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h4>Pembinaan Atlet</h4>
+                <p>Membina dan mengembangkan bakat karateka usia dini hingga dewasa untuk mencapai prestasi tertinggi di tingkat regional, nasional, dan internasional.</p>
+                <div class="mission-hover"></div>
+            </div>
+            
+            <div class="mission-card">
+                <div class="mission-number">02</div>
+                <div class="mission-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h4>Pendidikan Karakter</h4>
+                <p>Menanamkan nilai-nilai budi pekerti, disiplin, dan rasa hormat melalui latihan karate untuk membentuk pribadi yang unggul dan berakhlak mulia.</p>
+                <div class="mission-hover"></div>
+            </div>
+            
+            <div class="mission-card">
+                <div class="mission-number">03</div>
+                <div class="mission-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h4>Penyediaan Perlengkapan</h4>
+                <p>Menyediakan perlengkapan karate berkualitas tinggi dengan harga terjangkau untuk mendukung kenyamanan dan keamanan latihan.</p>
+                <div class="mission-hover"></div>
+            </div>
+            
+            <div class="mission-card">
+                <div class="mission-number">04</div>
+                <div class="mission-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h4>Membangun Komunitas</h4>
+                <p>Membangun komunitas karateka yang solid, saling mendukung, dan menjadi wadah pengembangan diri di luar dojo.</p>
+                <div class="mission-hover"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Filosofi Singkat -->
+    <div class="philosophy-strip">
+        <div class="philosophy-item">
+            <i class="fas fa-fist-raised"></i>
+            <span>Disiplin</span>
+        </div>
+        <div class="philosophy-item">
+            <i class="fas fa-heart"></i>
+            <span>Hormat</span>
+        </div>
+        <div class="philosophy-item">
+            <i class="fas fa-brain"></i>
+            <span>Konsentrasi</span>
+        </div>
+        <div class="philosophy-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Keberanian</span>
+        </div>
+        <div class="philosophy-item">
+            <i class="fas fa-hand-holding-heart"></i>
+            <span>Integritas</span>
+        </div>
+    </div>
+</section>
+
+    <!-- ===== COLLECTION SECTION ===== -->
+    <section class="collection" id="collection">
+        <div class="section-header">
+            <h2>Koleksi <span>Perlengkapan</span></h2>
+            <p>Produk pilihan untuk latihan dan kompetisi di Bogor</p>
+        </div>
+        
+        <div class="collection-grid">
+            <!-- Product 1: Karategi Dewasa -->
+            <div class="product-card">
+                <div class="product-badge">Best Seller</div>
+                <div class="product-image">
+                    <img src="kata.jpeg" alt="Karategi Dewasa">
+                    <div class="product-overlay">
+                        <button onclick="openQuickView('karategi-dewasa')">Quick View</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Karategi</div>
+                    <h3>Karategi Premium Dewasa</h3>
+                    <div class="product-rating">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
+                    <div class="product-price">
+                        Rp 5.000.000
+                        <span>Rp 6.000.000</span>
+                    </div>
                 </div>
             </div>
             
-            <!-- Testimonial 2 -->
-            <div class="testimoni-card">
-                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ani Wijaya" class="client-photo">
-                <div class="quote-icon">
-                    <i class="fas fa-quote-right"></i>
+            <!-- Product 2: Karategi Anak -->
+            <div class="product-card">
+                <div class="product-badge">New</div>
+                <div class="product-image">
+                    <img src="muvon.jpeg" alt="Karategi Anak">
+                    <div class="product-overlay">
+                        <button onclick="openQuickView('karategi-anak')">Quick View</button>
+                    </div>
                 </div>
-                <p class="testimoni-text">
-                    "Pelayanan terbaik! Sparepart original dengan harga kompetitif. Motor Ducati saya sekarang performanya seperti baru. Sangat puas dengan layanan purna jualnya."
-                </p>
-                <div class="client-info">
-                    <div class="client-name">Ani Wijaya</div>
-                    <div class="client-motor">Ducati Monster 821</div>
-                    <div class="client-rating">
+                <div class="product-info">
+                    <div class="product-category">Karategi</div>
+                    <h3>Karategi Anak Motif</h3>
+                    <div class="product-rating">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
+                    <div class="product-price">
+                        Rp 450.000
+                    </div>
                 </div>
             </div>
             
-            <!-- Testimonial 3 -->
-            <div class="testimoni-card">
-                <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Rudi Hartono" class="client-photo">
-                <div class="quote-icon">
-                    <i class="fas fa-quote-right"></i>
+            <!-- Product 3: Obi (Sabuk) -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="sabuk.jpeg" alt="Obi Karate">
+                    <div class="product-overlay">
+                        <button onclick="openQuickView('obi')">Quick View</button>
+                    </div>
                 </div>
-                <p class="testimoni-text">
-                    "Custom paint yang mereka buat untuk Harley saya sangat memukau. Banyak yang bertanya di mana saya melakukannya. Detailnya sempurna dan tahan lama."
-                </p>
-                <div class="client-info">
-                    <div class="client-name">Rudi Hartono</div>
-                    <div class="client-motor">Harley Davidson Custom</div>
-                    <div class="client-rating">
+                <div class="product-info">
+                    <div class="product-category">Obi (Sabuk)</div>
+                    <h3>Sabuk Merah Biru</h3>
+                    <div class="product-rating">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
+                    <div class="product-price">
+                        Rp 150.000
+                    </div>
                 </div>
             </div>
             
-            <!-- Testimonial 4 -->
-            <div class="testimoni-card">
-                <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Agus Supriyadi" class="client-photo">
-                <div class="quote-icon">
-                    <i class="fas fa-quote-right"></i>
+            <!-- Product 4: Pelindung Dada -->
+            <div class="product-card">
+                <div class="product-badge">Limited</div>
+                <div class="product-image">
+                    <img src="kumite.jpeg" alt="Pelindung Dada">
+                    <div class="product-overlay">
+                        <button onclick="openQuickView('protector')">Quick View</button>
+                    </div>
                 </div>
-                <p class="testimoni-text">
-                    "Perbaikan mesin Kawasaki ZX10R saya dikerjakan dengan cepat dan hasilnya maksimal. Tim mekaniknya benar-benar ahli dan menggunakan alat diagnostik modern."
-                </p>
-                <div class="client-info">
-                    <div class="client-name">Agus Supriyadi</div>
-                    <div class="client-motor">Kawasaki ZX10R</div>
-                    <div class="client-rating">
+                <div class="product-info">
+                    <div class="product-category">Pelindung</div>
+                    <h3>Alat Protector Karate</h3>
+                    <div class="product-rating">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
+                    <div class="product-price">
+                        Rp 2.000.000
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- ===== MATERIALS SECTION (VERSI BARU - LEBIH BAGUS) ===== -->
+<section class="materials" id="materials">
+    <div class="section-header">
+        <h2>Material <span>Premium</span></h2>
+        <p>Kualitas bahan terbaik untuk kenyamanan maksimal saat bergerak</p>
+    </div>
+    
+    <div class="materials-showcase">
+        <div class="materials-grid">
+            <!-- Material 1: Katun Combad -->
+            <div class="material-card premium">
+                <div class="material-icon-wrapper">
+                    <div class="material-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="material-badge">Best Choice</div>
+                </div>
+                <div class="material-content">
+                    <h3>Katun <span>Combad</span></h3>
+                    <div class="material-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(5.0)</span>
+                    </div>
+                    <p class="material-desc">Karategi berbahan katun combad 100% yang adem dan menyerap keringat dengan sempurna.</p>
+                    <div class="material-features">
+                        <div class="material-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Menyerap keringat</span>
+                        </div>
+                        <div class="material-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Lembut di kulit</span>
+                        </div>
+                        <div class="material-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Tidak panas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Material 2: Polyester Micro -->
+            <div class="material-card premium">
+                <div class="material-icon-wrapper">
+                    <div class="material-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="material-badge">Kompetisi</div>
+                </div>
+                <div class="material-content">
+                    <h3>Polyester <span>Micro</span></h3>
+                    <div class="material-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(4.8)</span>
+                    </div>
+                    <p class="material-desc">Bahan ringan dan cepat kering, cocok untuk kompetisi dengan mobilitas tinggi.</p>
+                    <div class="material-features">
+                        <div class="material-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Ringan</span>
+                        </div>
+                        <div class="material-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Cepat kering</span>
+                        </div>
+                        <div class="material-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Tahan lama</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Material 3: EVA Foam -->
+            <div class="material-card premium">
+                <div class="material-icon-wrapper">
+                    <div class="material-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="material-badge">Proteksi</div>
+                </div>
+                <div class="material-content">
+                    <h3>EVA <span>Foam</span></h3>
+                    <div class="material-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(5.0)</span>
+                    </div>
+                    <p class="material-desc">Pelindung tubuh dengan busa EVA yang kuat namun fleksibel, menyerap benturan optimal.</p>
+                    <div class="material-features">
+                        <div class="material-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Anti benturan</span>
+                        </div>
+                        <div class="material-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Fleksibel</span>
+                        </div>
+                        <div class="material-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Ringan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Material 4: Sabuk Berkualitas -->
+            <div class="material-card premium">
+                <div class="material-icon-wrapper">
+                    <div class="material-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div class="material-badge">Premium</div>
+                </div>
+                <div class="material-content">
+                    <h3>Sabuk <span>Berkualitas</span></h3>
+                    <div class="material-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(5.0)</span>
+                    </div>
+                    <p class="material-desc">Tenunan tebal dan bordir rapi, tahan lama dan nyaman dipakai seharian.</p>
+                    <div class="material-features">
+                        <div class="material-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Tenunan tebal</span>
+                        </div>
+                        <div class="material-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Bordir rapi</span>
+                        </div>
+                        <div class="material-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Awet</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <div class="testimoni-nav">
-            <button class="prev-btn" id="prevTestimoni">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            
-            <div class="testimoni-dots" id="testimoniDots">
-                <!-- Dots akan dibuat dengan JavaScript -->
+        <!-- Tambahan: Material Comparison -->
+        <div class="material-comparison">
+            <h3>Perbandingan <span>Material</span></h3>
+            <div class="comparison-table">
+                <div class="comparison-row header">
+                    <div class="comparison-cell">Material</div>
+                    <div class="comparison-cell">Ketahanan</div>
+                    <div class="comparison-cell">Kenyamanan</div>
+                    <div class="comparison-cell">Harga</div>
+                    <div class="comparison-cell">Rekomendasi</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">Katun Combad</div>
+                    <div class="comparison-cell"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="comparison-cell">Rp 450-650K</div>
+                    <div class="comparison-cell">Latihan Harian</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">Polyester Micro</div>
+                    <div class="comparison-cell"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="comparison-cell">Rp 500-700K</div>
+                    <div class="comparison-cell">Kompetisi</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">EVA Foam</div>
+                    <div class="comparison-cell"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="comparison-cell">Rp 850K-1.2M</div>
+                    <div class="comparison-cell">Pelindung</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- ===== FOUNDER SECTION ===== -->
+    <section class="founder" id="founder">
+        <div class="section-header">
+            <h2>Pendiri <span>Dojo Bogor</span></h2>
+            <p>Sensei yang menginspirasi semangat karate di Bogor</p>
+        </div>
+        
+        <div class="founder-container">
+            <div class="founder-card">
+                <div class="founder-image">
+                    <img src="thur.jpeg" alt="Sensei Mochamad Fathurahman">
+                    <div class="founder-social">
+                        <a href="https://instagram.com/sifthrr"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/6285781211577"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/channel/UCRyICfZvBX3bucXE2ngfB3Q"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="founder-info">
+                    <h3>Mochamad Fathurahman</h3>
+                    <p class="founder-position">Sensei & Founder</p>
+                    <p class="founder-bio">Sensei Fathur adalah pemegang sabuk hitam dan 2 dan karate. Dengan pengalaman lebih dari 10 tahun di dunia karate, ia mendirikan Karate-Do Store Bogor untuk memudahkan karateka mendapatkan perlengkapan berkualitas dan tempat berlatih yang nyaman di Kota Bogor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LOOKBOOK SECTION ===== -->
+    <section class="lookbook" id="lookbook">
+        <div class="section-header">
+            <h2>Lookbook <span>Karate</span></h2>
+            <p>Inspirasi gaya dan semangat karateka Bogor</p>
+        </div>
+        
+        <div class="lookbook-grid">
+            <div class="lookbook-item large" onclick="openLookbookQuickView('kata')">
+                <img src="beregu.jpeg" alt="Karateka 1">
+                <button class="lookbook-quick-view"><i class="fas fa-search"></i> Quick View</button>
+                <div class="lookbook-overlay">
+                    <div>
+                        <h3>Kata</h3>
+                        <p>Kesempurnaan Gerakan</p>
+                    </div>
+                </div>
             </div>
             
-            <button class="next-btn" id="nextTestimoni">
-                <i class="fas fa-chevron-right"></i>
+            <div class="lookbook-item" onclick="openLookbookQuickView('kumite')">
+                <img src="aljafari.jpg" alt="Karateka 2">
+                <button class="lookbook-quick-view"><i class="fas fa-search"></i> Quick View</button>
+                <div class="lookbook-overlay">
+                    <div>
+                        <h3>Kumite</h3>
+                        <p>Semangat Bertarung</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lookbook-item" onclick="openLookbookQuickView('obi')">
+                <img src="obi.jpeg" alt="Karateka 3">
+                <button class="lookbook-quick-view"><i class="fas fa-search"></i> Quick View</button>
+                <div class="lookbook-overlay">
+                    <div>
+                        <h3>Obi</h3>
+                        <p>Simbol Perjalanan</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lookbook-item" onclick="openLookbookQuickView('karategi')">
+                <img src="kata.jpeg" alt="Karateka 4">
+                <button class="lookbook-quick-view"><i class="fas fa-search"></i> Quick View</button>
+                <div class="lookbook-overlay">
+                    <div>
+                        <h3>Karategi</h3>
+                        <p>Kebanggaan Karateka</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lookbook-item" onclick="openLookbookQuickView('dojo')">
+                <img src="dojo.jpeg" alt="Karateka 5">
+                <button class="lookbook-quick-view"><i class="fas fa-search"></i> Quick View</button>
+                <div class="lookbook-overlay">
+                    <div>
+                        <h3>Dojo</h3>
+                        <p>Tempat Berlatih</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS SECTION ===== -->
+    <section class="testimonials">
+        <div class="section-header">
+            <h2>Testimoni <span>Karateka Bogor</span></h2>
+            <p>Apa kata mereka tentang produk dan dojo kami di Bogor</p>
+        </div>
+        
+        <div class="testimonial-slider">
+            <div class="testimonial-container" id="testimonialContainer">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <img src="Fata.jpeg" alt="Fata">
+                        <p>"Karategi yang dijual sangat nyaman dipakai, tidak panas dan jahitannya rapi. Pengiriman cepat ke wilayah Bogor, cocok untuk latihan rutin."</p>
+                        <h4>Fata Rania Habibur Rohman</h4>
+                        <span>Karategi Premium, Bogor</span>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <img src="radza.jpeg" alt="Radza">
+                        <p>"Dojonya di Bogor bersih dan pelatihnya berpengalaman. Saya juga beli pelindung tubuh di sini, kualitasnya bagus dan harga terjangkau."</p>
+                        <h4>Radza kausar Atmoko</h4>
+                        <span>Anggota Dojo Bogor</span>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <img src="wira.jpeg" alt="Wira">
+                        <p>"Sabuk karate merah birunya sangat memuaskan. bahannya tebal dan tidak mudah rusak. Terima kasih Karate-Do Store Bogor."</p>
+                        <h4>Jubair Nurwiradana</h4>
+                        <span>Obi merah biru, Bogor</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <img src="Tiara.jpeg" alt="Tiara">
+                        <p>"Alatnya sangat bagus Pas di saya. bahannya tebal dan tidak mudah rusak. Terima kasih Karate-Do Store Bogor."</p>
+                        <h4>Tiara Salsabila Putri Cahyadie</h4>
+                        <span>Alat Protector, Bogor</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-nav">
+                <button class="testimonial-btn" id="prevTestimonial">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="testimonial-dots" id="testimonialDots">
+                    <!-- Dots will be added by JS -->
+                </div>
+                
+                <button class="testimonial-btn" id="nextTestimonial">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GOOGLE MAPS SECTION ===== -->
+    <section class="map-section" id="lokasi">
+        <div class="section-header">
+            <h2>Lokasi <span>Dojo Bogor</span></h2>
+            <p>Temukan dojo utama kami di Kota Bogor</p>
+        </div>
+        
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.4392090743934!2d106.7850474!3d-6.5977703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5e3d0130f7b%3A0x3f9d4a4b4b4b4b4b!2sBogor!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <h2>Hubungi <span>Kami</span></h2>
+            <p>Ada pertanyaan tentang produk atau pendaftaran dojo di Bogor? Silakan kirim pesan.</p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Alamat Dojo Bogor</h4>
+                        <p>SDN, Jl. Raya Gn. Batu, RT.01/RW.01, Loji, Kec. Bogor Bar., Kota Bogor, Jawa Barat 16118</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Telepon Bogor</h4>
+                        <p>(0251) 1234-5678<br>+62 857-8121-1577</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <p>karatedobogor@gmail.com<br>cs@karatedobogor.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Jam Latihan Bogor</h4>
+                        <p>Sabtu: 15.30 - 17.30<br>Minggu: 07.30 - 09.30</p>
+                    </div>
+                </div>
+                
+                <div class="contact-social">
+                    <h3>Ikuti Kami</h3>
+                    <div class="social-icons">
+                        <a href="https://instagram.com/dojogb2_official"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/6285781211577"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form action="proses_pesan.php" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="nama" placeholder="Nama Lengkap" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="telepon" placeholder="Nomor Telepon">
+                    </div>
+                    <div class="form-group">
+                        <select name="kategori" required>
+                            <option value="">Pilih Kategori</option>
+                            <option value="Informasi Produk">Informasi Produk</option>
+                            <option value="Pendaftaran Dojo Bogor">Pendaftaran Dojo Bogor</option>
+                            <option value="Ukuran & Stok">Ukuran & Stok</option>
+                            <option value="Kerjasama">Kerjasama</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="pesan" placeholder="Pesan Anda" required></textarea>
+                    </div>
+                    <button type="submit" name="submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Kirim Pesan
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MESSAGES TABLE SECTION ===== -->
+    <section class="messages-section" id="messages">
+        <div class="section-header">
+            <h2>Daftar <span>Pesan</span></h2>
+            <p>Pesan yang masuk dari pelanggan Bogor</p>
+        </div>
+        
+        <div class="table-container">
+            <div class="table-header">
+                <h3><i class="fas fa-inbox"></i> Pesan Masuk Bogor</h3>
+                <div class="message-count">Total: <?php echo $total_pesan; ?> Pesan</div>
+            </div>
+            
+            <div class="table-responsive">
+                <?php if ($result && mysqli_num_rows($result) > 0): ?>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Telepon</th>
+                            <th>Kategori</th>
+                            <th>Pesan</th>
+                            <th>Tanggal</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        $no = 1;
+                        while ($row = mysqli_fetch_assoc($result)): 
+                        ?>
+                        <tr>
+                            <td><?php echo $no++; ?></td>
+                            <td><?php echo htmlspecialchars($row['nama']); ?></td>
+                            <td><?php echo htmlspecialchars($row['email']); ?></td>
+                            <td><?php echo htmlspecialchars($row['telepon'] ?: '-'); ?></td>
+                            <td><?php echo htmlspecialchars($row['kategori']); ?></td>
+                            <td><?php echo htmlspecialchars(substr($row['pesan'], 0, 50)) . (strlen($row['pesan']) > 50 ? '...' : ''); ?></td>
+                            <td><?php echo date('d/m/Y H:i', strtotime($row['created_at'])); ?></td>
+                            <td>
+                                <a href="hapus_pesan.php?id=<?php echo $row['id']; ?>" 
+                                   class="delete-btn" 
+                                   onclick="return confirm('Yakin ingin menghapus pesan dari <?php echo htmlspecialchars($row['nama']); ?>?')">
+                                    <i class="fas fa-trash"></i> Hapus
+                                </a>
+                            </td>
+                        </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+                <?php else: ?>
+                <div class="no-data">
+                    <i class="fas fa-inbox"></i>
+                    <h3>Belum Ada Pesan</h3>
+                    <p>Belum ada pesan yang masuk dari pelanggan Bogor. Pesan akan muncul di sini setelah pelanggan mengirimkan formulir kontak.</p>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3><i class="fas fa-fist-raised"></i> Karate-Do Store Bogor</h3>
+                <p>Menjadi pusat perlengkapan dan dojo karate terpercaya di Kota Bogor, membangun karateka yang berkarakter dan berprestasi.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Tautan Cepat</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#collection">Koleksi</a></li>
+                    <li><a href="#materials">Material</a></li>
+                    <li><a href="#lookbook">Lookbook</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Informasi</h4>
+                <ul>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                    <li><a href="#">Kebijakan Privasi</a></li>
+                    <li><a href="#">Panduan Ukuran</a></li>
+                    <li><a href="#">Pengembalian</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-newsletter">
+                <h4>Newsletter Bogor</h4>
+                <p>Dapatkan info produk terbaru dan jadwal latihan di Bogor</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Email Anda">
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Karate-Do Store Bogor. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ===== QUICK VIEW MODAL ===== -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeQuickView()">
+                <i class="fas fa-times"></i>
             </button>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be dynamically inserted here -->
+            </div>
         </div>
     </div>
-</section>
 
-<!-- ================= CONTACT ================= -->
-<section id="contact">
-    <h2>Hubungi Kami</h2>
-    <form onsubmit="kirimPesan(event)">
-        <input type="text" placeholder="Nama Lengkap" required>
-        <input type="email" placeholder="Email" required>
-        <input type="tel" placeholder="Nomor Telepon">
-        <textarea rows="6" placeholder="Jelaskan kebutuhan modifikasi atau perbaikan motor Anda" required></textarea>
-        <button type="submit"><i class="fas fa-paper-plane"></i> Kirim Pesan</button>
-    </form>
-</section>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
 
-<!-- ================= FOOTER ================= -->
-<footer>
-    <div class="footer-content">
-        <div class="footer-logo">
-            <h3><i class="fas fa-motorcycle"></i> PT MotorSport Indonesia</h3>
-            <p>Spesialis motor sport, custom, dan aksesoris terpercaya sejak 2010.</p>
-        </div>
-        <div class="footer-links">
-            <h4>Link Cepat</h4>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">Tentang Kami</a></li>
-                <li><a href="#services">Layanan</a></li>
-                <li><a href="#portfolio">Portofolio</a></li>
-                <li><a href="#team">Tim Kami</a></li>
-            </ul>
-        </div>
-        <div class="footer-contact">
-            <h4>Kontak Kami</h4>
-            <p><i class="fas fa-map-marker-alt"></i> Jl. Raya Motor Sport No. 123, Jakarta</p>
-            <p><i class="fas fa-phone"></i> (021) 4567-8901</p>
-            <p><i class="fas fa-envelope"></i> info@motorsport-indonesia.co.id</p>
-            <p><i class="fas fa-clock"></i> Buka: Senin-Sabtu 08.00-18.00</p>
-        </div>
-    </div>
-    <div class="copyright">
-        <p>&copy; 2026 PT MotorSport Indonesia. All rights reserved.</p>
-    </div>
-</footer>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
 
-<!-- ================= JAVASCRIPT ================= -->
-<script>
-function scrollToContact() {
-    document.getElementById("contact")
-        .scrollIntoView({ behavior: "smooth" });
-}
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
 
-function kirimPesan(e) {
-    e.preventDefault();
-    // Simulasi pengiriman pesan
-    const form = e.target;
-    const button = form.querySelector("button");
-    const originalText = button.innerHTML;
-    
-    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
-    button.disabled = true;
-    
-    setTimeout(() => {
-        alert("Terima kasih! Pesan Anda telah berhasil dikirim. Tim kami akan menghubungi Anda dalam 1x24 jam.");
-        form.reset();
-        button.innerHTML = originalText;
-        button.disabled = false;
-    }, 1500);
-}
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
 
-/* ===== MOBILE MENU TOGGLE ===== */
-const menuToggle = document.getElementById('menuToggle');
-const mainNav = document.getElementById('mainNav');
-
-menuToggle.addEventListener('click', () => {
-    mainNav.classList.toggle('active');
-    menuToggle.innerHTML = mainNav.classList.contains('active') 
-        ? '<i class="fas fa-times"></i>' 
-        : '<i class="fas fa-bars"></i>';
-});
-
-// Tutup menu saat klik link
-mainNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        mainNav.classList.remove('active');
-        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    });
-});
-
-/* ===== ANIMASI SAAT SCROLL ===== */
-const sections = document.querySelectorAll("section");
-
-window.addEventListener("scroll", () => {
-    sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const triggerPoint = window.innerHeight - 150;
-
-        if (sectionTop < triggerPoint) {
-            section.classList.add("show");
-        }
-    });
-});
-
-// Trigger animasi pada saat load halaman
-window.addEventListener('load', () => {
-    sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const triggerPoint = window.innerHeight - 150;
-
-        if (sectionTop < triggerPoint) {
-            section.classList.add("show");
-        }
-    });
-});
-
-// Efek parallax untuk hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallax = document.querySelector('header');
-    if (parallax) {
-        parallax.style.backgroundPositionY = scrolled * 0.5 + 'px';
-    }
-});
-
-// Smooth scrolling untuk anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
+        // Section animation on scroll
+        const sections = document.querySelectorAll('section');
         
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Testimonial slider
+        const testimonialContainer = document.getElementById('testimonialContainer');
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        const prevBtn = document.getElementById('prevTestimonial');
+        const nextBtn = document.getElementById('nextTestimonial');
+        const dotsContainer = document.getElementById('testimonialDots');
         
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
+        let currentIndex = 0;
+        const totalTestimonials = testimonialCards.length;
+        
+        // Create dots
+        for (let i = 0; i < totalTestimonials; i++) {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToTestimonial(i));
+            dotsContainer.appendChild(dot);
+        }
+        
+        const dots = document.querySelectorAll('.dot');
+        
+        function updateTestimonial() {
+            testimonialContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
             });
         }
-    });
-});
-
-/* ===== TOGGLE SERVICE DESCRIPTION ===== */
-function toggleService(card) {
-    // Tutup semua kartu layanan lainnya
-    const allCards = document.querySelectorAll('.service-card');
-    allCards.forEach(otherCard => {
-        if (otherCard !== card && otherCard.classList.contains('active')) {
-            otherCard.classList.remove('active');
-        }
-    });
-    
-    // Buka/tutup kartu yang diklik
-    card.classList.toggle('active');
-}
-
-/* ===== TESTIMONIAL SLIDER ===== */
-document.addEventListener('DOMContentLoaded', function() {
-    const testimoniContainer = document.getElementById('testimoniContainer');
-    const testimoniCards = document.querySelectorAll('.testimoni-card');
-    const prevBtn = document.getElementById('prevTestimoni');
-    const nextBtn = document.getElementById('nextTestimoni');
-    const dotsContainer = document.getElementById('testimoniDots');
-    
-    let currentIndex = 0;
-    const totalTestimonials = testimoniCards.length;
-    
-    // Create dots
-    for (let i = 0; i < totalTestimonials; i++) {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToTestimonial(i));
-        dotsContainer.appendChild(dot);
-    }
-    
-    const dots = document.querySelectorAll('.dot');
-    
-    function updateTestimonial() {
-        testimoniContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
         
-        // Update active dot
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
-        });
-    }
-    
-    function goToTestimonial(index) {
-        currentIndex = index;
-        if (currentIndex < 0) currentIndex = totalTestimonials - 1;
-        if (currentIndex >= totalTestimonials) currentIndex = 0;
-        updateTestimonial();
-    }
-    
-    function nextTestimonial() {
-        currentIndex = (currentIndex + 1) % totalTestimonials;
-        updateTestimonial();
-    }
-    
-    function prevTestimonial() {
-        currentIndex = (currentIndex - 1 + totalTestimonials) % totalTestimonials;
-        updateTestimonial();
-    }
-    
-    // Event listeners
-    prevBtn.addEventListener('click', prevTestimonial);
-    nextBtn.addEventListener('click', nextTestimonial);
-    
-    // Auto slide setiap 5 detik
-    let slideInterval = setInterval(nextTestimonial, 5000);
-    
-    // Hentikan auto slide saat hover
-    testimoniContainer.addEventListener('mouseenter', () => {
-        clearInterval(slideInterval);
-    });
-    
-    // Lanjutkan auto slide saat mouse leave
-    testimoniContainer.addEventListener('mouseleave', () => {
-        slideInterval = setInterval(nextTestimonial, 5000);
-    });
-    
-    // Tambah click untuk testimonial cards
-    testimoniCards.forEach(card => {
-        card.style.cursor = 'pointer';
-        card.addEventListener('click', function() {
-            // Bisa ditambahkan aksi lain seperti modal popup
-            alert('Testimonial ' + (Array.from(testimoniCards).indexOf(this) + 1));
-        });
-    });
-    
-    // Initialize
-    updateTestimonial();
-});
-</script>
+        function goToTestimonial(index) {
+            currentIndex = index;
+            updateTestimonial();
+        }
+        
+        function nextTestimonial() {
+            currentIndex = (currentIndex + 1) % totalTestimonials;
+            updateTestimonial();
+        }
+        
+        function prevTestimonial() {
+            currentIndex = (currentIndex - 1 + totalTestimonials) % totalTestimonials;
+            updateTestimonial();
+        }
+        
+        prevBtn.addEventListener('click', prevTestimonial);
+        nextBtn.addEventListener('click', nextTestimonial);
+        
+        // Auto slide
+        setInterval(nextTestimonial, 5000);
 
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // QUICK VIEW MODAL FUNCTIONALITY
+        const modal = document.getElementById('quickViewModal');
+        const modalBody = document.getElementById('modalBody');
+
+        // Function untuk quick view produk (dari koleksi)
+        function openQuickView(productType) {
+            let productData = {};
+            
+            switch(productType) {
+                case 'karategi-dewasa':
+                    productData = {
+                        badge: 'Best Seller',
+                        image: 'kata.jpeg',
+                        category: 'Karategi',
+                        title: 'Karategi Premium Dewasa',
+                        rating: 5,
+                        price: 'Rp 5.000.000',
+                        oldPrice: 'Rp 6.000.000',
+                        description: 'Karategi berbahan katun combad 100% yang adem dan nyaman dipakai untuk latihan harian maupun kompetisi. Jahitan rapi dan kuat.',
+                        specs: [
+                            'Material: 100% Cotton',
+                            'Berat: 12 oz',
+                            'Ukuran: S, M, L, XL',
+                            'Warna: Putih',
+                            'Care: Cuci dengan air dingin'
+                        ]
+                    };
+                    break;
+                case 'karategi-anak':
+                    productData = {
+                        badge: 'New',
+                        image: 'muvon.jpeg',
+                        category: 'Karategi',
+                        title: 'Karategi Anak Motif',
+                        rating: 4.5,
+                        price: 'Rp 450.000',
+                        description: 'Karategi anak dengan motif border lucu, nyaman dipakai untuk latihan dan menambah semangat berlatih.',
+                        specs: [
+                            'Material: Katun',
+                            'Berat: 10 oz',
+                            'Ukuran: Anak (110-150 cm)',
+                            'Warna: Putih dengan motif',
+                            'Care: Cuci dengan air dingin'
+                        ]
+                    };
+                    break;
+                case 'obi':
+                    productData = {
+                        image: 'sabuk.jpeg',
+                        category: 'Obi (Sabuk)',
+                        title: 'Sabuk Merah Biru',
+                        rating: 5,
+                        price: 'Rp 150.000',
+                        description: 'Sabuk karate dengan bordir nama sesuai pesanan. Tersedia berbagai warna sesuai tingkatan sabuk. Jahitan rapi dan kuat.',
+                        specs: [
+                            'Material: Katun tebal',
+                            'Panjang: 200-320 cm',
+                            'Lebar: 4 cm',
+                            'Bordir: Nama (maks 15 huruf)',
+                            'Warna: Putih, Kuning, Hijau, Biru, Coklat, Hitam'
+                        ]
+                    };
+                    break;
+                case 'protector':
+                    productData = {
+                        badge: 'Limited',
+                        image: 'kumite.jpeg',
+                        category: 'Pelindung',
+                        title: 'Alat Protector Karate',
+                        rating: 5,
+                        price: 'Rp 2.000.000',
+                        description: 'Pelindung tubuh untuk latihan kumite dengan busa EVA yang kuat namun fleksibel, melindungi area dada dan perut dengan baik.',
+                        specs: [
+                            'Material: EVA Foam + Polyester',
+                            'Ukuran: S, M, L, XL',
+                            'Warna:Merah, Biru',
+                            'Adjustable straps',
+                            'Standar WKF'
+                        ]
+                    };
+                    break;
+            }
+            
+            // Build modal content
+            modalBody.innerHTML = `
+                <div class="modal-image">
+                    <img src="${productData.image}" alt="${productData.title}">
+                    ${productData.badge ? `<div class="product-badge">${productData.badge}</div>` : ''}
+                </div>
+                <div class="modal-details">
+                    <div class="product-category">${productData.category}</div>
+                    <h2>${productData.title}</h2>
+                    <div class="product-rating">
+                        ${generateStars(productData.rating)}
+                    </div>
+                    <div class="product-price">
+                        ${productData.price}
+                        ${productData.oldPrice ? `<span>${productData.oldPrice}</span>` : ''}
+                    </div>
+                    
+                    <div class="product-description">
+                        <h4>Deskripsi Produk</h4>
+                        <p>${productData.description}</p>
+                    </div>
+                    
+                    <div class="product-specs">
+                        <h4>Spesifikasi</h4>
+                        <ul class="specs-list">
+                            ${productData.specs.map(spec => `<li><i class="fas fa-check"></i> ${spec}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart()">
+                            <i class="fas fa-shopping-cart"></i> Tambah ke Keranjang
+                        </button>
+                        <button class="btn-wishlist" onclick="addToWishlist()">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Function untuk quick view lookbook
+        function openLookbookQuickView(type) {
+            let lookbookData = {};
+            
+            switch(type) {
+                case 'kata':
+                    lookbookData = {
+                        image: 'beregu.jpeg',
+                        title: 'Kata - Kesempurnaan Gerakan',
+                        description: 'Kata adalah rangkaian gerakan baku dalam karate yang menggabungkan teknik, konsentrasi, dan semangat. Latihan kata mengajarkan disiplin dan pemahaman mendalam tentang filosofi karate.',
+                        details: [
+                            'Jenis Kata: Heian, Tekki, Bassai',
+                            'Tingkat Kesulitan: Pemula - Mahir',
+                            'Waktu Latihan: 45-60 menit',
+                            'Manfaat: Meningkatkan fokus, koordinasi, dan pemahaman teknik'
+                        ]
+                    };
+                    break;
+                case 'kumite':
+                    lookbookData = {
+                        image: 'aljafari.jpg',
+                        title: 'Kumite - Semangat Bertarung',
+                        description: 'Kumite adalah latihan pertarungan dalam karate yang mengajarkan aplikasi teknik dalam situasi nyata. Dilakukan dengan kontrol penuh untuk keamanan.',
+                        details: [
+                            'Jenis Kumite: Gohon, Ippon, Jiyu',
+                            'Level: Pemula - Mahir',
+                            'Perlengkapan: Pelindung tubuh, gloves',
+                            'Manfaat: Meningkatkan refleks, strategi, dan kepercayaan diri'
+                        ]
+                    };
+                    break;
+                case 'obi':
+                    lookbookData = {
+                        image: 'obi.jpeg',
+                        title: 'Obi - Simbol Perjalanan',
+                        description: 'Sabuk dalam karate melambangkan tingkatan dan perjalanan seorang karateka. Setiap warna memiliki makna filosofis yang mendalam.',
+                        details: [
+                            'Warna Sabuk: Putih (pemula), Kuning, Hijau, Biru, Coklat, Hitam',
+                            'Bahan: Katun tebal, bordir rapi',
+                            'Ukuran: 200-320 cm',
+                            'Makna: Kesucian, semangat, kedewasaan, kebijaksanaan'
+                        ]
+                    };
+                    break;
+                case 'karategi':
+                    lookbookData = {
+                        image: 'kata.jpeg',
+                        title: 'Karategi - Kebanggaan Karateka',
+                        description: 'Karategi adalah seragam resmi karate yang dirancang untuk memberikan kenyamanan dan kebebasan bergerak saat latihan maupun bertanding.',
+                        details: [
+                            'Bahan: Katun combad, polyester micro',
+                            'Berat: 10-14 oz',
+                            'Ukuran: S, M, L, XL, XXL',
+                            'Fitur: Jahitan rangkap, kerah kuat, celana elastis'
+                        ]
+                    };
+                    break;
+                case 'dojo':
+                    lookbookData = {
+                        image: 'dojo.jpeg',
+                        title: 'Dojo - Tempat Berlatih',
+                        description: 'Dojo adalah tempat suci untuk berlatih karate. Suasana dojo yang bersih dan kondusif sangat penting untuk mendukung konsentrasi dan semangat latihan.',
+                        details: [
+                            'Fasilitas: tempat latihan yang luas',
+                            'Kapasitas: 30-50 orang',
+                            'Jam Latihan: Sabtu 15.30-17.30, Minggu 07.30-09.30',
+                            'Alamat: SDN, Jl. Raya Gn. Batu, Bogor'
+                        ]
+                    };
+                    break;
+            }
+            
+            // Build modal content untuk lookbook
+            modalBody.innerHTML = `
+                <div class="modal-image">
+                    <img src="${lookbookData.image}" alt="${lookbookData.title}">
+                </div>
+                <div class="modal-details">
+                    <h2>${lookbookData.title}</h2>
+                    <p>${lookbookData.description}</p>
+                    
+                    <div class="modal-meta">
+                        ${lookbookData.details.map(detail => `<span class="modal-meta-item"><i class="fas fa-tag"></i> ${detail}</span>`).join('')}
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" onclick="contactForInfo()">
+                            <i class="fas fa-info-circle"></i> Info Lebih Lanjut
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function generateStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= Math.floor(rating)) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else if (i - rating < 1 && i - rating > 0) {
+                    stars += '<i class="fas fa-star-half-alt"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
+                }
+            }
+            return stars;
+        }
+
+        function closeQuickView() {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function addToCart() {
+            alert('Produk ditambahkan ke keranjang! (Demo)');
+        }
+
+        function addToWishlist() {
+            alert('Produk ditambahkan ke wishlist! (Demo)');
+        }
+
+        function contactForInfo() {
+            alert('Silakan hubungi kami melalui form kontak untuk informasi lebih lanjut.');
+            closeQuickView();
+            // Scroll ke bagian kontak
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeQuickView();
+            }
+        });
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                closeQuickView();
+            }
+        });
+    </script>
 </body>
 </html>
