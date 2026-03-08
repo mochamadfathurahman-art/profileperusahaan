@@ -2221,7 +2221,7 @@
         <ul class="nav-menu" id="navMenu">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">Tentang</a></li>
-            <li><a href="#vision-mission">Visi-Misi</a></li>
+            <li><a href="#vison-mission">Visi-Misi</a></li>
             <li><a href="#collection">Koleksi</a></li>
             <li><a href="#materials">Material</a></li>
             <li><a href="#founder">Pendiri</a></li>
@@ -2232,8 +2232,12 @@
         </ul>
     </nav>
 
-    <!-- ===== ALERT MESSAGES (STATIC EXAMPLE) ===== -->
-    <!-- <div class="alert alert-success">Pesan berhasil dikirim! Terima kasih telah menghubungi kami.</div> -->
+    <!-- ===== ALERT MESSAGES ===== -->
+    <?php if ($status && $message): ?>
+    <div class="alert alert-<?php echo $status == 'success' ? 'success' : 'error'; ?>">
+        <?php echo htmlspecialchars($message); ?>
+    </div>
+    <?php endif; ?>
 
     <!-- ===== HERO SECTION ===== -->
     <section class="hero" id="home">
@@ -2275,7 +2279,7 @@
         
         <div class="about-container">
             <div class="about-image">
-                <img src="https://placehold.co/600x400/1a1a1a/white?text=Dojo+Bogor" alt="Dojo Karate Bogor">
+                <img src="inkai.png" alt="Dojo Karate Bogor">
                 <div class="about-badge">
                     <h4>2010</h4>
                     <p>Berdiri</p>
@@ -2412,7 +2416,7 @@
             <div class="product-card">
                 <div class="product-badge">Best Seller</div>
                 <div class="product-image">
-                    <img src="https://placehold.co/600x400/333/white?text=Karategi+Dewasa" alt="Karategi Dewasa">
+                    <img src="kata.jpeg" alt="Karategi Dewasa">
                     <div class="product-overlay">
                         <button onclick="openQuickView('karategi-dewasa')">Quick View</button>
                     </div>
@@ -2438,7 +2442,7 @@
             <div class="product-card">
                 <div class="product-badge">New</div>
                 <div class="product-image">
-                    <img src="https://placehold.co/600x400/444/white?text=Karategi+Anak" alt="Karategi Anak">
+                    <img src="muvon.jpeg" alt="Karategi Anak">
                     <div class="product-overlay">
                         <button onclick="openQuickView('karategi-anak')">Quick View</button>
                     </div>
@@ -2462,7 +2466,7 @@
             <!-- Product 3: Obi (Sabuk) -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://placehold.co/600x400/555/white?text=Obi+Karate" alt="Obi Karate">
+                    <img src="sabuk.jpeg" alt="Obi Karate">
                     <div class="product-overlay">
                         <button onclick="openQuickView('obi')">Quick View</button>
                     </div>
@@ -2487,7 +2491,7 @@
             <div class="product-card">
                 <div class="product-badge">Limited</div>
                 <div class="product-image">
-                    <img src="https://placehold.co/600x400/666/white?text=Pelindung+Dada" alt="Pelindung Dada">
+                    <img src="kumite.jpeg" alt="Pelindung Dada">
                     <div class="product-overlay">
                         <button onclick="openQuickView('protector')">Quick View</button>
                     </div>
@@ -2711,11 +2715,11 @@
         <div class="founder-container">
             <div class="founder-card">
                 <div class="founder-image">
-                    <img src="https://placehold.co/600x600/333/white?text=Sensei+Fathur" alt="Sensei Mochamad Fathurahman">
+                    <img src="thur.jpeg" alt="Sensei Mochamad Fathurahman">
                     <div class="founder-social">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://instagram.com/sifthrr"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/6285781211577"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/channel/UCRyICfZvBX3bucXE2ngfB3Q"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="founder-info">
@@ -2736,7 +2740,7 @@
         
         <div class="lookbook-grid">
             <div class="lookbook-item large" onclick="openLookbookQuickView('kata')">
-                <img src="https://placehold.co/800x800/222/white?text=Kata" alt="Karateka 1">
+                <img src="beregu.jpeg" alt="Karateka 1">
                 <button class="lookbook-quick-view"><i class="fas fa-search"></i> Quick View</button>
                 <div class="lookbook-overlay">
                     <div>
@@ -2747,7 +2751,7 @@
             </div>
             
             <div class="lookbook-item" onclick="openLookbookQuickView('kumite')">
-                <img src="https://placehold.co/600x400/333/white?text=Kumite" alt="Karateka 2">
+                <img src="aljafari.jpg" alt="Karateka 2">
                 <button class="lookbook-quick-view"><i class="fas fa-search"></i> Quick View</button>
                 <div class="lookbook-overlay">
                     <div>
@@ -2758,7 +2762,7 @@
             </div>
             
             <div class="lookbook-item" onclick="openLookbookQuickView('obi')">
-                <img src="https://placehold.co/600x400/444/white?text=Obi" alt="Karateka 3">
+                <img src="obi.jpeg" alt="Karateka 3">
                 <button class="lookbook-quick-view"><i class="fas fa-search"></i> Quick View</button>
                 <div class="lookbook-overlay">
                     <div>
@@ -2769,7 +2773,7 @@
             </div>
             
             <div class="lookbook-item" onclick="openLookbookQuickView('karategi')">
-                <img src="https://placehold.co/600x400/555/white?text=Karategi" alt="Karateka 4">
+                <img src="kata.jpeg" alt="Karateka 4">
                 <button class="lookbook-quick-view"><i class="fas fa-search"></i> Quick View</button>
                 <div class="lookbook-overlay">
                     <div>
@@ -2780,7 +2784,7 @@
             </div>
             
             <div class="lookbook-item" onclick="openLookbookQuickView('dojo')">
-                <img src="https://placehold.co/600x400/666/white?text=Dojo" alt="Karateka 5">
+                <img src="dojo.jpeg" alt="Karateka 5">
                 <button class="lookbook-quick-view"><i class="fas fa-search"></i> Quick View</button>
                 <div class="lookbook-overlay">
                     <div>
@@ -2804,7 +2808,7 @@
                 <!-- Testimonial 1 -->
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <img src="https://placehold.co/100x100/333/white?text=Fata" alt="Fata">
+                        <img src="Fata.jpeg" alt="Fata">
                         <p>"Karategi yang dijual sangat nyaman dipakai, tidak panas dan jahitannya rapi. Pengiriman cepat ke wilayah Bogor, cocok untuk latihan rutin."</p>
                         <h4>Fata Rania Habibur Rohman</h4>
                         <span>Karategi Premium, Bogor</span>
@@ -2814,7 +2818,7 @@
                 <!-- Testimonial 2 -->
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <img src="https://placehold.co/100x100/444/white?text=Radza" alt="Radza">
+                        <img src="radza.jpeg" alt="Radza">
                         <p>"Dojonya di Bogor bersih dan pelatihnya berpengalaman. Saya juga beli pelindung tubuh di sini, kualitasnya bagus dan harga terjangkau."</p>
                         <h4>Radza kausar Atmoko</h4>
                         <span>Anggota Dojo Bogor</span>
@@ -2824,7 +2828,7 @@
                 <!-- Testimonial 3 -->
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <img src="https://placehold.co/100x100/555/white?text=Wira" alt="Wira">
+                        <img src="wira.jpeg" alt="Wira">
                         <p>"Sabuk karate merah birunya sangat memuaskan. bahannya tebal dan tidak mudah rusak. Terima kasih Karate-Do Store Bogor."</p>
                         <h4>Jubair Nurwiradana</h4>
                         <span>Obi merah biru, Bogor</span>
@@ -2834,7 +2838,7 @@
                 <!-- Testimonial 4 -->
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <img src="https://placehold.co/100x100/666/white?text=Tiara" alt="Tiara">
+                        <img src="Tiara.jpeg" alt="Tiara">
                         <p>"Alatnya sangat bagus Pas di saya. bahannya tebal dan tidak mudah rusak. Terima kasih Karate-Do Store Bogor."</p>
                         <h4>Tiara Salsabila Putri Cahyadie</h4>
                         <span>Alat Protector, Bogor</span>
@@ -2930,8 +2934,8 @@
                 <div class="contact-social">
                     <h3>Ikuti Kami</h3>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://instagram.com/dojogb2_official"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/6285781211577"><i class="fab fa-whatsapp"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                         <a href="#"><i class="fab fa-tiktok"></i></a>
                     </div>
@@ -2939,7 +2943,7 @@
             </div>
             
             <div class="contact-form">
-                <form action="#" method="POST" onsubmit="alert('Formulir kontak: Nama, Email, dan Pesan Anda telah dikirim (simulasi).'); return false;">
+                <form action="proses_pesan.php" method="POST">
                     <div class="form-group">
                         <input type="text" name="nama" placeholder="Nama Lengkap" required>
                     </div>
@@ -2971,7 +2975,7 @@
         </div>
     </section>
 
-    <!-- ===== MESSAGES TABLE SECTION (STATIC EXAMPLE) ===== -->
+  <!-- ===== MESSAGES TABLE SECTION (STATIC EXAMPLE) ===== -->
     <section class="messages-section" id="messages">
         <div class="section-header">
             <h2>Daftar <span>Pesan</span></h2>
@@ -3041,6 +3045,7 @@
         </div>
     </section>
 
+
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="footer-content">
@@ -3075,7 +3080,7 @@
             <div class="footer-newsletter">
                 <h4>Newsletter Bogor</h4>
                 <p>Dapatkan info produk terbaru dan jadwal latihan di Bogor</p>
-                <form class="newsletter-form" onsubmit="alert('Newsletter: Email Anda telah terdaftar (simulasi).'); return false;">
+                <form class="newsletter-form">
                     <input type="email" placeholder="Email Anda">
                     <button type="submit"><i class="fas fa-paper-plane"></i></button>
                 </form>
@@ -3224,7 +3229,7 @@
                 case 'karategi-dewasa':
                     productData = {
                         badge: 'Best Seller',
-                        image: 'https://placehold.co/600x400/333/white?text=Karategi+Dewasa',
+                        image: 'kata.jpeg',
                         category: 'Karategi',
                         title: 'Karategi Premium Dewasa',
                         rating: 5,
@@ -3243,7 +3248,7 @@
                 case 'karategi-anak':
                     productData = {
                         badge: 'New',
-                        image: 'https://placehold.co/600x400/444/white?text=Karategi+Anak',
+                        image: 'muvon.jpeg',
                         category: 'Karategi',
                         title: 'Karategi Anak Motif',
                         rating: 4.5,
@@ -3260,7 +3265,7 @@
                     break;
                 case 'obi':
                     productData = {
-                        image: 'https://placehold.co/600x400/555/white?text=Obi+Karate',
+                        image: 'sabuk.jpeg',
                         category: 'Obi (Sabuk)',
                         title: 'Sabuk Merah Biru',
                         rating: 5,
@@ -3278,7 +3283,7 @@
                 case 'protector':
                     productData = {
                         badge: 'Limited',
-                        image: 'https://placehold.co/600x400/666/white?text=Pelindung',
+                        image: 'kumite.jpeg',
                         category: 'Pelindung',
                         title: 'Alat Protector Karate',
                         rating: 5,
@@ -3319,16 +3324,16 @@
                     
                     <div class="product-specs">
                         <h4>Spesifikasi</h4>
-                        <ul style="list-style: none; padding: 0;">
-                            ${productData.specs.map(spec => `<li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 0.5rem;"></i> ${spec}</li>`).join('')}
+                        <ul class="specs-list">
+                            ${productData.specs.map(spec => `<li><i class="fas fa-check"></i> ${spec}</li>`).join('')}
                         </ul>
                     </div>
                     
-                    <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                        <button style="flex: 1; padding: 1rem; background: var(--secondary); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;" onclick="addToCart()">
-                            <i class="fas fa-shopping-cart"></i> Tambah
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart()">
+                            <i class="fas fa-shopping-cart"></i> Tambah ke Keranjang
                         </button>
-                        <button style="width: 50px; height: 50px; background: var(--light); border: none; border-radius: 10px; color: var(--secondary); cursor: pointer;" onclick="addToWishlist()">
+                        <button class="btn-wishlist" onclick="addToWishlist()">
                             <i class="fas fa-heart"></i>
                         </button>
                     </div>
@@ -3346,7 +3351,7 @@
             switch(type) {
                 case 'kata':
                     lookbookData = {
-                        image: 'https://placehold.co/600x400/222/white?text=Kata',
+                        image: 'beregu.jpeg',
                         title: 'Kata - Kesempurnaan Gerakan',
                         description: 'Kata adalah rangkaian gerakan baku dalam karate yang menggabungkan teknik, konsentrasi, dan semangat. Latihan kata mengajarkan disiplin dan pemahaman mendalam tentang filosofi karate.',
                         details: [
@@ -3359,7 +3364,7 @@
                     break;
                 case 'kumite':
                     lookbookData = {
-                        image: 'https://placehold.co/600x400/333/white?text=Kumite',
+                        image: 'aljafari.jpg',
                         title: 'Kumite - Semangat Bertarung',
                         description: 'Kumite adalah latihan pertarungan dalam karate yang mengajarkan aplikasi teknik dalam situasi nyata. Dilakukan dengan kontrol penuh untuk keamanan.',
                         details: [
@@ -3372,7 +3377,7 @@
                     break;
                 case 'obi':
                     lookbookData = {
-                        image: 'https://placehold.co/600x400/444/white?text=Obi',
+                        image: 'obi.jpeg',
                         title: 'Obi - Simbol Perjalanan',
                         description: 'Sabuk dalam karate melambangkan tingkatan dan perjalanan seorang karateka. Setiap warna memiliki makna filosofis yang mendalam.',
                         details: [
@@ -3385,7 +3390,7 @@
                     break;
                 case 'karategi':
                     lookbookData = {
-                        image: 'https://placehold.co/600x400/555/white?text=Karategi',
+                        image: 'kata.jpeg',
                         title: 'Karategi - Kebanggaan Karateka',
                         description: 'Karategi adalah seragam resmi karate yang dirancang untuk memberikan kenyamanan dan kebebasan bergerak saat latihan maupun bertanding.',
                         details: [
@@ -3398,7 +3403,7 @@
                     break;
                 case 'dojo':
                     lookbookData = {
-                        image: 'https://placehold.co/600x400/666/white?text=Dojo',
+                        image: 'dojo.jpeg',
                         title: 'Dojo - Tempat Berlatih',
                         description: 'Dojo adalah tempat suci untuk berlatih karate. Suasana dojo yang bersih dan kondusif sangat penting untuk mendukung konsentrasi dan semangat latihan.',
                         details: [
@@ -3424,8 +3429,8 @@
                         ${lookbookData.details.map(detail => `<span class="modal-meta-item"><i class="fas fa-tag"></i> ${detail}</span>`).join('')}
                     </div>
                     
-                    <div style="margin-top: 2rem;">
-                        <button style="width: 100%; padding: 1rem; background: var(--secondary); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;" onclick="contactForInfo()">
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" onclick="contactForInfo()">
                             <i class="fas fa-info-circle"></i> Info Lebih Lanjut
                         </button>
                     </div>
